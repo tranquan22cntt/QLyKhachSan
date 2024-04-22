@@ -5168,11 +5168,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY.csproj",
+      "projectUniqueName": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\QLyKhachSan\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY.csproj",
       "projectName": "DoAnKhachSanLUXURY",
-      "projectPath": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY.csproj",
+      "projectPath": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\QLyKhachSan\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY\\obj\\",
+      "outputPath": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\QLyKhachSan\\DoAnKhachSanLUXURY\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"

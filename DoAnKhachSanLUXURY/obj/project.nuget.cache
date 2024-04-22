@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D7QljNf/Z0SMktXqUZ2f2LqxQQqSTjhYTkDkjfWyysbY6IbH8AWVP0vYLNfLOzojY6OGlvI8WwEtOfBPqdpSQg==",
+  "dgSpecHash": "4ebcl7hK1KW1OQhZYNFRRJOKLg9y5viNvntwOS+zGTQv4yDEqW9jE+TsNmgYl3gi9ogvNgLIN6trIFNRFuRmkQ==",
   "success": true,
-  "projectFilePath": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY.csproj",
+  "projectFilePath": "D:\\LapTrinhWindow\\DoAnKhachSanLUXURY\\QLyKhachSan\\DoAnKhachSanLUXURY\\DoAnKhachSanLUXURY.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages\\devexpress.charts\\21.2.6\\devexpress.charts.21.2.6.nupkg.sha512",
     "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages\\devexpress.charts.core\\21.2.6\\devexpress.charts.core.21.2.6.nupkg.sha512",

@@ -288,7 +288,7 @@
             fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             fluentDesignFormControl1.Manager = fluentFormDefaultManager1;
             fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            fluentDesignFormControl1.Size = new System.Drawing.Size(974, 39);
+            fluentDesignFormControl1.Size = new System.Drawing.Size(1071, 39);
             fluentDesignFormControl1.TabIndex = 2;
             fluentDesignFormControl1.TabStop = false;
             // 
@@ -304,7 +304,7 @@
             groupBox2.Controls.Add(btnQLNhanVien);
             groupBox2.Controls.Add(btnNhan);
             groupBox2.Controls.Add(btnQLDichVu);
-            groupBox2.Location = new System.Drawing.Point(100, 109);
+            groupBox2.Location = new System.Drawing.Point(320, 109);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(727, 448);
             groupBox2.TabIndex = 3;
@@ -390,7 +390,7 @@
             label7.AutoSize = true;
             label7.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             label7.ForeColor = System.Drawing.Color.SteelBlue;
-            label7.Location = new System.Drawing.Point(100, 58);
+            label7.Location = new System.Drawing.Point(320, 58);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(364, 48);
             label7.TabIndex = 4;
@@ -400,7 +400,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(974, 599);
+            ClientSize = new System.Drawing.Size(1071, 599);
             Controls.Add(label7);
             Controls.Add(groupBox2);
             Controls.Add(accordionControl1);
