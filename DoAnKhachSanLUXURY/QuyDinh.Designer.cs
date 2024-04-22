@@ -47,12 +47,13 @@
             // 
             // pictureEdit1
             // 
+            pictureEdit1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             pictureEdit1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             pictureEdit1.EditValue = resources.GetObject("pictureEdit1.EditValue");
             pictureEdit1.Location = new System.Drawing.Point(12, 51);
             pictureEdit1.Name = "pictureEdit1";
             pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            pictureEdit1.Size = new System.Drawing.Size(1232, 648);
+            pictureEdit1.Size = new System.Drawing.Size(1034, 648);
             pictureEdit1.TabIndex = 1;
             // 
             // frmQuyDinh

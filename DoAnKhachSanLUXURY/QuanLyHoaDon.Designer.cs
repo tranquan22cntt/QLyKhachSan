@@ -42,6 +42,9 @@
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            btnTangGia = new System.Windows.Forms.Button();
+            btnGiamGia = new System.Windows.Forms.Button();
+            textBox1 = new System.Windows.Forms.TextBox();
             btnDong = new System.Windows.Forms.Button();
             btnThanhToan = new System.Windows.Forms.Button();
             label7 = new System.Windows.Forms.Label();
@@ -53,9 +56,6 @@
             dgvChinhSachPhuThu = new System.Windows.Forms.DataGridView();
             groupBox5 = new System.Windows.Forms.GroupBox();
             dgvHoaDonDichVu = new System.Windows.Forms.DataGridView();
-            textBox1 = new System.Windows.Forms.TextBox();
-            btnGiamGia = new System.Windows.Forms.Button();
-            btnTangGia = new System.Windows.Forms.Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -213,6 +213,31 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
+            // btnTangGia
+            // 
+            btnTangGia.Image = Properties.Resources.plus_button;
+            btnTangGia.Location = new System.Drawing.Point(319, 99);
+            btnTangGia.Name = "btnTangGia";
+            btnTangGia.Size = new System.Drawing.Size(25, 24);
+            btnTangGia.TabIndex = 16;
+            btnTangGia.UseVisualStyleBackColor = true;
+            // 
+            // btnGiamGia
+            // 
+            btnGiamGia.Image = Properties.Resources.minus;
+            btnGiamGia.Location = new System.Drawing.Point(319, 129);
+            btnGiamGia.Name = "btnGiamGia";
+            btnGiamGia.Size = new System.Drawing.Size(26, 24);
+            btnGiamGia.TabIndex = 15;
+            btnGiamGia.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(22, 109);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(321, 28);
+            textBox1.TabIndex = 14;
+            // 
             // btnDong
             // 
             btnDong.Location = new System.Drawing.Point(94, 193);
@@ -258,6 +283,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             groupBox3.Controls.Add(dgvHoaDonTienPhong);
             groupBox3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
@@ -270,6 +296,7 @@
             // 
             // dgvHoaDonTienPhong
             // 
+            dgvHoaDonTienPhong.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dgvHoaDonTienPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHoaDonTienPhong.Location = new System.Drawing.Point(6, 19);
             dgvHoaDonTienPhong.Name = "dgvHoaDonTienPhong";
@@ -279,6 +306,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             groupBox4.Controls.Add(dgvChinhSachPhuThu);
             groupBox4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox4.ForeColor = System.Drawing.Color.SteelBlue;
@@ -291,6 +319,7 @@
             // 
             // dgvChinhSachPhuThu
             // 
+            dgvChinhSachPhuThu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dgvChinhSachPhuThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChinhSachPhuThu.Location = new System.Drawing.Point(6, 20);
             dgvChinhSachPhuThu.Name = "dgvChinhSachPhuThu";
@@ -300,6 +329,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             groupBox5.Controls.Add(dgvHoaDonDichVu);
             groupBox5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox5.ForeColor = System.Drawing.Color.SteelBlue;
@@ -312,37 +342,13 @@
             // 
             // dgvHoaDonDichVu
             // 
+            dgvHoaDonDichVu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dgvHoaDonDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHoaDonDichVu.Location = new System.Drawing.Point(6, 23);
             dgvHoaDonDichVu.Name = "dgvHoaDonDichVu";
             dgvHoaDonDichVu.RowHeadersWidth = 51;
             dgvHoaDonDichVu.Size = new System.Drawing.Size(492, 233);
             dgvHoaDonDichVu.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new System.Drawing.Point(22, 109);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(321, 28);
-            textBox1.TabIndex = 14;
-            // 
-            // btnGiamGia
-            // 
-            btnGiamGia.Image = Properties.Resources.minus;
-            btnGiamGia.Location = new System.Drawing.Point(319, 129);
-            btnGiamGia.Name = "btnGiamGia";
-            btnGiamGia.Size = new System.Drawing.Size(26, 24);
-            btnGiamGia.TabIndex = 15;
-            btnGiamGia.UseVisualStyleBackColor = true;
-            // 
-            // btnTangGia
-            // 
-            btnTangGia.Image = Properties.Resources.plus_button;
-            btnTangGia.Location = new System.Drawing.Point(319, 99);
-            btnTangGia.Name = "btnTangGia";
-            btnTangGia.Size = new System.Drawing.Size(25, 24);
-            btnTangGia.TabIndex = 16;
-            btnTangGia.UseVisualStyleBackColor = true;
             // 
             // frmQuanLyHoaDon
             // 

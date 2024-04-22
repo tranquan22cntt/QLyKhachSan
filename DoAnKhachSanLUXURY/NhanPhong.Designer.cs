@@ -172,6 +172,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             groupBox3.Controls.Add(dgvDanhSachNhanPhongTrongNgay);
             groupBox3.Controls.Add(btnXemChiTiet);
             groupBox3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);

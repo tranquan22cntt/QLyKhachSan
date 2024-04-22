@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="21.2.*-*" />
+    <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.6" />
   </ItemGroup>
 
   <ItemGroup>

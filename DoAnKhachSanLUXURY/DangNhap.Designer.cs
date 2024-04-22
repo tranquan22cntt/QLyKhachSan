@@ -32,12 +32,12 @@
             pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             label1 = new System.Windows.Forms.Label();
             groupBox1 = new System.Windows.Forms.GroupBox();
-            label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            txtTenDangNhap = new System.Windows.Forms.TextBox();
-            txtMatKhau = new System.Windows.Forms.TextBox();
-            btnDangNhap = new System.Windows.Forms.Button();
             btnThoat = new System.Windows.Forms.Button();
+            btnDangNhap = new System.Windows.Forms.Button();
+            txtMatKhau = new System.Windows.Forms.TextBox();
+            txtTenDangNhap = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -78,39 +78,16 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             // 
-            // label2
+            // btnThoat
             // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(19, 28);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(151, 24);
-            label2.TabIndex = 0;
-            label2.Text = "Tên đăng nhập:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(19, 102);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(99, 24);
-            label3.TabIndex = 1;
-            label3.Text = "Mật khẩu:";
-            // 
-            // txtTenDangNhap
-            // 
-            txtTenDangNhap.Location = new System.Drawing.Point(19, 55);
-            txtTenDangNhap.Name = "txtTenDangNhap";
-            txtTenDangNhap.Size = new System.Drawing.Size(349, 23);
-            txtTenDangNhap.TabIndex = 2;
-            // 
-            // txtMatKhau
-            // 
-            txtMatKhau.Location = new System.Drawing.Point(19, 129);
-            txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new System.Drawing.Size(349, 23);
-            txtMatKhau.TabIndex = 3;
+            btnThoat.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnThoat.Location = new System.Drawing.Point(75, 294);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new System.Drawing.Size(247, 51);
+            btnThoat.TabIndex = 5;
+            btnThoat.Text = "Thoát";
+            btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnDangNhap
             // 
@@ -122,15 +99,39 @@
             btnDangNhap.Text = "Đăng nhập";
             btnDangNhap.UseVisualStyleBackColor = true;
             // 
-            // btnThoat
+            // txtMatKhau
             // 
-            btnThoat.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnThoat.Location = new System.Drawing.Point(75, 294);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new System.Drawing.Size(247, 51);
-            btnThoat.TabIndex = 5;
-            btnThoat.Text = "Thoát";
-            btnThoat.UseVisualStyleBackColor = true;
+            txtMatKhau.Location = new System.Drawing.Point(19, 129);
+            txtMatKhau.Name = "txtMatKhau";
+            txtMatKhau.Size = new System.Drawing.Size(349, 23);
+            txtMatKhau.TabIndex = 3;
+            // 
+            // txtTenDangNhap
+            // 
+            txtTenDangNhap.Location = new System.Drawing.Point(19, 55);
+            txtTenDangNhap.Name = "txtTenDangNhap";
+            txtTenDangNhap.Size = new System.Drawing.Size(349, 23);
+            txtTenDangNhap.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Location = new System.Drawing.Point(19, 102);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(99, 24);
+            label3.TabIndex = 1;
+            label3.Text = "Mật khẩu:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(19, 28);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(151, 24);
+            label2.TabIndex = 0;
+            label2.Text = "Tên đăng nhập:";
             // 
             // DangNhap
             // 
@@ -140,6 +141,9 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(pictureEdit1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "DangNhap";
             Text = "DangNhap";
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).EndInit();
