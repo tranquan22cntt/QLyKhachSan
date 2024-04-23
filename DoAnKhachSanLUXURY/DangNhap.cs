@@ -9,14 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BLL;
 namespace DoAnKhachSanLUXURY
 {
     public partial class DangNhap : DevExpress.XtraEditors.XtraForm
     {
-        private KetNoi ketNoi = new KetNoi();
+        private DangNhapBLL dangNhapBLL;
         public DangNhap()
         {
             InitializeComponent();
+            dangNhapBLL =new DangNhapBLL();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -40,8 +42,8 @@ namespace DoAnKhachSanLUXURY
                 return;
             }
 
-            DataTable dt = ExecuteQuery($"SELECT * FROM TAIKHOAN WHERE USERNAME = '{username}' AND MATKHAU = '{password}'");
-            if (dt.Rows.Count > 0)
+           
+            if (dangNhapBLL.DangNhap(username, password))
             {
                 MessageBox.Show("Đăng nhập thành công.");
                 Form1 form1 = new Form1();
@@ -51,18 +53,6 @@ namespace DoAnKhachSanLUXURY
             else
             {
                 MessageBox.Show("Tên người dùng hoặc mật khẩu không đúng.");
-            }
-        }
-        private DataTable ExecuteQuery(string query)
-        {
-            using (SqlConnection conn = ketNoi.Connect())
-            {
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
-                {
-                    DataSet dataSet = new DataSet();
-                    adapter.Fill(dataSet);
-                    return dataSet.Tables[0];
-                }
             }
         }
     }
