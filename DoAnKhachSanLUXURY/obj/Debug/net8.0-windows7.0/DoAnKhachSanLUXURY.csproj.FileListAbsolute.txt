@@ -205,3 +205,6 @@ D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\obj\Debug\ne
 D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\obj\Debug\net8.0-windows7.0\DoAnKhachSanLUXURY.pdb
 D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\obj\Debug\net8.0-windows7.0\DoAnKhachSanLUXURY.genruntimeconfig.cache
 D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\obj\Debug\net8.0-windows7.0\ref\DoAnKhachSanLUXURY.dll
+D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\bin\Debug\net8.0-windows7.0\Guna.UI2.dll
+D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\bin\Debug\net8.0-windows7.0\System.Management.dll
+D:\LapTrinhWindow\DoAnKhachSanLUXURY\QLyKhachSan\DoAnKhachSanLUXURY\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net7.0\System.Management.dll
