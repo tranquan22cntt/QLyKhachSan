@@ -146,6 +146,7 @@
             btnThemDichVu.TabIndex = 4;
             btnThemDichVu.Text = "Thêm dịch vụ";
             btnThemDichVu.UseVisualStyleBackColor = true;
+            btnThemDichVu.Click += btnThemDichVu_Click;
             // 
             // label5
             // 
@@ -349,6 +350,7 @@
             dgvHoaDonDichVu.RowHeadersWidth = 51;
             dgvHoaDonDichVu.Size = new System.Drawing.Size(492, 233);
             dgvHoaDonDichVu.TabIndex = 0;
+            dgvHoaDonDichVu.CellContentClick += dgvHoaDonDichVu_CellContentClick;
             // 
             // frmQuanLyHoaDon
             // 
@@ -363,6 +365,7 @@
             Controls.Add(groupBox1);
             Name = "frmQuanLyHoaDon";
             Text = "QuanLyHoaDon";
+            Load += frmQuanLyHoaDon_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
