@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAO;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -83,7 +84,28 @@ namespace DoAnKhachSanLUXURY
 
         private void btnThemDichVu_Click(object sender, EventArgs e)
         {
+            
+            string MADV = txtMaDV.Text;
+            string SANPHAM = cbSanPham.Text;
+            string loaidv = cbLoaiDichVu.Text;
+            decimal GIATIEN = Convert.ToDecimal(txtGia.Text);
+            int SOLUONG = int.Parse(txtSoLuong.Text);
 
+            ThemDichVuBLL dvBLL = new ThemDichVuBLL();
+            bool isSuccess = dvBLL.ThemDichVu(MADV, SANPHAM, loaidv, GIATIEN, SOLUONG);
+
+            if (isSuccess)
+            {
+                MessageBox.Show("Thêm dịch vụ thành công!");
+                LoadDV();
+            }
+            else
+                MessageBox.Show("Thêm dịch vụ thất bại!");
+        }
+
+        private void dgvChinhSachPhuThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
         }
     }
 }
