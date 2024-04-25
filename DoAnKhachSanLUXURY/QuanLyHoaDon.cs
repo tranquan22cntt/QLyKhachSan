@@ -50,6 +50,23 @@ namespace DoAnKhachSanLUXURY
         private void frmQuanLyHoaDon_Load(object sender, EventArgs e)
         {
             LoadDV();
+            ChinhSachPhuThuBLL chinhSachPhuThuBLL = new ChinhSachPhuThuBLL();
+            List<ChinhSachPhuThu> danhSach = chinhSachPhuThuBLL.GetDanhSachChinhSachPhuThu();
+
+            dgvChinhSachPhuThu.Rows.Clear();
+
+            if (dgvChinhSachPhuThu.Columns.Count == 0)
+            {
+                dgvChinhSachPhuThu.Columns.Add("MaPhuThu", "Mã Phụ Thu");
+                dgvChinhSachPhuThu.Columns.Add("MoTa", "Mô Tả");
+                dgvChinhSachPhuThu.Columns.Add("PhanTramPhuThu", "Phần Trăm Phụ Thu");
+            }
+
+            // Thêm dòng dữ liệu vào DataGridView
+            foreach (ChinhSachPhuThu chinhSachPhuThu in danhSach)
+            {
+                dgvChinhSachPhuThu.Rows.Add(chinhSachPhuThu.MaPhuThu, chinhSachPhuThu.MoTa, chinhSachPhuThu.PhanTramPhuThu);
+            }
         }
 
         private void LoadDV()
