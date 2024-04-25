@@ -16,10 +16,12 @@ namespace DoAnKhachSanLUXURY
     {
         private int quantity = 0;
         LoadDVBLL themDichVuBLL;
+        HoaDonTienPhongBLL HoaDonTienPhongBLL;
         public frmQuanLyHoaDon()
         {
             InitializeComponent();
             themDichVuBLL = new LoadDVBLL();
+            HoaDonTienPhongBLL = new HoaDonTienPhongBLL();
         }
 
         private void btnTang_Click(object sender, EventArgs e)
@@ -50,6 +52,8 @@ namespace DoAnKhachSanLUXURY
         private void frmQuanLyHoaDon_Load(object sender, EventArgs e)
         {
             LoadDV();
+            HoaDonTienPhong();
+
             ChinhSachPhuThuBLL chinhSachPhuThuBLL = new ChinhSachPhuThuBLL();
             List<ChinhSachPhuThu> danhSach = chinhSachPhuThuBLL.GetDanhSachChinhSachPhuThu();
 
@@ -62,7 +66,6 @@ namespace DoAnKhachSanLUXURY
                 dgvChinhSachPhuThu.Columns.Add("PhanTramPhuThu", "Phần Trăm Phụ Thu");
             }
 
-            // Thêm dòng dữ liệu vào DataGridView
             foreach (ChinhSachPhuThu chinhSachPhuThu in danhSach)
             {
                 dgvChinhSachPhuThu.Rows.Add(chinhSachPhuThu.MaPhuThu, chinhSachPhuThu.MoTa, chinhSachPhuThu.PhanTramPhuThu);
@@ -72,6 +75,10 @@ namespace DoAnKhachSanLUXURY
         private void LoadDV()
         {
             dgvHoaDonDichVu.DataSource = themDichVuBLL.GetDichVu();
+        }
+        private void HoaDonTienPhong()
+        {
+            dgvHoaDonTienPhong.DataSource = HoaDonTienPhongBLL.GetHoaDon();
         }
 
         private void btnThemDichVu_Click(object sender, EventArgs e)
