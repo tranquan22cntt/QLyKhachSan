@@ -23,6 +23,7 @@ namespace DAO
                 //MessageBox.Show("Không kết nối được CSDL: " + e.Message, "Thông báo",
                 //MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            conn.Close  ();
             return conn;
         }
     }

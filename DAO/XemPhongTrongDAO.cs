@@ -8,19 +8,17 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class loadNhanPhongDAO
+    public class XemPhongTrongDAO
     {
         private KetNoi ketNoi;
 
-        public loadNhanPhongDAO()
+        public XemPhongTrongDAO()
         {
             ketNoi = new KetNoi();
         }
-        public DataTable GetDSnhanphong()
+        public DataTable getDSphongtrong()
         {
-            string query = $"SELECT TT_NHANPHONG.MAPHONG, TT_NHANPHONG.SOPHONG,PHONG.LOAIPHONG,PHONG.GIATIEN,PHONG.SUCCHUA, TT_NHANPHONG.MAKH, KHACHHANG.TENKH,KHACHHANG.CCCD,KHACHHANG.SDT," +
-                $"KHACHHANG.NGAYDEN,KHACHHANG.NGAYNHANPHONG FROM TT_NHANPHONG,KHACHHANG,PHONG WHERE  " +
-                $"TT_NHANPHONG.MAPHONG = PHONG.MAPHONG  AND TT_NHANPHONG.MAKH=KHACHHANG.MAKH";
+            string query = $"SELECT * FROM PHONG WHERE STA_TUS=1";
             using (SqlConnection conn = ketNoi.Connect())
             {
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))

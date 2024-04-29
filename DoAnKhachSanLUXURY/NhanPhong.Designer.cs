@@ -39,13 +39,15 @@
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             groupBox3 = new System.Windows.Forms.GroupBox();
+            button1 = new System.Windows.Forms.Button();
+            btnReload = new System.Windows.Forms.Button();
             dgvDanhSachNhanPhongTrongNgay = new System.Windows.Forms.DataGridView();
             btnXemChiTiet = new System.Windows.Forms.Button();
             groupBox4 = new System.Windows.Forms.GroupBox();
+            dtpNgaytra = new System.Windows.Forms.DateTimePicker();
+            dtpNgayNhan = new System.Windows.Forms.DateTimePicker();
             txtGia = new System.Windows.Forms.TextBox();
             txtSLNguoiToiDa = new System.Windows.Forms.TextBox();
-            txtNgayTra = new System.Windows.Forms.TextBox();
-            txtNgayNhan = new System.Windows.Forms.TextBox();
             txtTenLoaiPhong = new System.Windows.Forms.TextBox();
             txtTenPhong = new System.Windows.Forms.TextBox();
             txtTheCanCuoc = new System.Windows.Forms.TextBox();
@@ -111,9 +113,9 @@
             label2.AutoSize = true;
             label2.Location = new System.Drawing.Point(21, 23);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(98, 17);
+            label2.Size = new System.Drawing.Size(74, 17);
             label2.TabIndex = 1;
-            label2.Text = "Mã đặt phòng:";
+            label2.Text = "Mã phòng:";
             // 
             // btnTimKiem
             // 
@@ -124,6 +126,7 @@
             btnTimKiem.TabIndex = 0;
             btnTimKiem.Text = "Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // groupBox2
             // 
@@ -181,11 +184,13 @@
             // groupBox3
             // 
             groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox3.Controls.Add(button1);
+            groupBox3.Controls.Add(btnReload);
             groupBox3.Controls.Add(dgvDanhSachNhanPhongTrongNgay);
             groupBox3.Controls.Add(btnXemChiTiet);
             groupBox3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
-            groupBox3.Location = new System.Drawing.Point(435, 50);
+            groupBox3.Location = new System.Drawing.Point(443, 50);
             groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -193,6 +198,28 @@
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách nhận phòng trong ngày";
+            // 
+            // button1
+            // 
+            button1.Location = new System.Drawing.Point(16, 401);
+            button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(150, 28);
+            button1.TabIndex = 4;
+            button1.Text = "Xem phòng trống";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // btnReload
+            // 
+            btnReload.Location = new System.Drawing.Point(172, 401);
+            btnReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new System.Drawing.Size(90, 28);
+            btnReload.TabIndex = 4;
+            btnReload.Text = "Reload";
+            btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
             // 
             // dgvDanhSachNhanPhongTrongNgay
             // 
@@ -203,6 +230,7 @@
             dgvDanhSachNhanPhongTrongNgay.RowHeadersWidth = 51;
             dgvDanhSachNhanPhongTrongNgay.Size = new System.Drawing.Size(413, 375);
             dgvDanhSachNhanPhongTrongNgay.TabIndex = 1;
+            dgvDanhSachNhanPhongTrongNgay.SelectionChanged += dgvDanhSachNhanPhongTrongNgay_SelectionChanged;
             // 
             // btnXemChiTiet
             // 
@@ -216,10 +244,10 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(dtpNgaytra);
+            groupBox4.Controls.Add(dtpNgayNhan);
             groupBox4.Controls.Add(txtGia);
             groupBox4.Controls.Add(txtSLNguoiToiDa);
-            groupBox4.Controls.Add(txtNgayTra);
-            groupBox4.Controls.Add(txtNgayNhan);
             groupBox4.Controls.Add(txtTenLoaiPhong);
             groupBox4.Controls.Add(txtTenPhong);
             groupBox4.Controls.Add(txtTheCanCuoc);
@@ -238,17 +266,31 @@
             groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            groupBox4.Size = new System.Drawing.Size(389, 217);
+            groupBox4.Size = new System.Drawing.Size(390, 217);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
             groupBox4.Text = "Thông tin nhận phòng";
+            // 
+            // dtpNgaytra
+            // 
+            dtpNgaytra.Location = new System.Drawing.Point(209, 95);
+            dtpNgaytra.Name = "dtpNgaytra";
+            dtpNgaytra.Size = new System.Drawing.Size(163, 24);
+            dtpNgaytra.TabIndex = 17;
+            // 
+            // dtpNgayNhan
+            // 
+            dtpNgayNhan.Location = new System.Drawing.Point(209, 52);
+            dtpNgayNhan.Name = "dtpNgayNhan";
+            dtpNgayNhan.Size = new System.Drawing.Size(163, 24);
+            dtpNgayNhan.TabIndex = 16;
             // 
             // txtGia
             // 
             txtGia.Location = new System.Drawing.Point(211, 189);
             txtGia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtGia.Name = "txtGia";
-            txtGia.Size = new System.Drawing.Size(151, 24);
+            txtGia.Size = new System.Drawing.Size(161, 24);
             txtGia.TabIndex = 15;
             // 
             // txtSLNguoiToiDa
@@ -256,24 +298,8 @@
             txtSLNguoiToiDa.Location = new System.Drawing.Point(211, 141);
             txtSLNguoiToiDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtSLNguoiToiDa.Name = "txtSLNguoiToiDa";
-            txtSLNguoiToiDa.Size = new System.Drawing.Size(151, 24);
+            txtSLNguoiToiDa.Size = new System.Drawing.Size(161, 24);
             txtSLNguoiToiDa.TabIndex = 14;
-            // 
-            // txtNgayTra
-            // 
-            txtNgayTra.Location = new System.Drawing.Point(211, 97);
-            txtNgayTra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            txtNgayTra.Name = "txtNgayTra";
-            txtNgayTra.Size = new System.Drawing.Size(151, 24);
-            txtNgayTra.TabIndex = 13;
-            // 
-            // txtNgayNhan
-            // 
-            txtNgayNhan.Location = new System.Drawing.Point(211, 52);
-            txtNgayNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            txtNgayNhan.Name = "txtNgayNhan";
-            txtNgayNhan.Size = new System.Drawing.Size(151, 24);
-            txtNgayNhan.TabIndex = 12;
             // 
             // txtTenLoaiPhong
             // 
@@ -346,7 +372,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(211, 77);
+            label8.Location = new System.Drawing.Point(212, 79);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(66, 17);
             label8.TabIndex = 3;
@@ -391,10 +417,11 @@
             groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            groupBox5.Size = new System.Drawing.Size(389, 89);
+            groupBox5.Size = new System.Drawing.Size(390, 89);
             groupBox5.TabIndex = 5;
             groupBox5.TabStop = false;
             groupBox5.Text = "Chức năng";
+            groupBox5.Enter += groupBox5_Enter;
             // 
             // btnDong
             // 
@@ -425,6 +452,7 @@
             btnNhanPhong.TabIndex = 1;
             btnNhanPhong.Text = "Nhận phòng";
             btnNhanPhong.UseVisualStyleBackColor = true;
+            btnNhanPhong.Click += btnNhanPhong_Click;
             // 
             // btnThemKhachHang
             // 
@@ -435,6 +463,7 @@
             btnThemKhachHang.TabIndex = 0;
             btnThemKhachHang.Text = "Thêm khách hàng";
             btnThemKhachHang.UseVisualStyleBackColor = true;
+            btnThemKhachHang.Click += btnThemKhachHang_Click;
             // 
             // frmNhanPhong
             // 
@@ -489,8 +518,7 @@
         private System.Windows.Forms.TextBox txtHoVaTen;
         private System.Windows.Forms.TextBox txtGia;
         private System.Windows.Forms.TextBox txtSLNguoiToiDa;
-        private System.Windows.Forms.TextBox txtNgayTra;
-        private System.Windows.Forms.TextBox txtNgayNhan;
+
         private System.Windows.Forms.TextBox txtTenLoaiPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.TextBox txtTheCanCuoc;
@@ -501,5 +529,9 @@
         private System.Windows.Forms.Button btnThemKhachHang;
         private System.Windows.Forms.Button btnXemChiTiet;
         private System.Windows.Forms.DataGridView dgvDanhSachNhanPhongTrongNgay;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dtpNgaytra;
+        private System.Windows.Forms.DateTimePicker dtpNgayNhan;
     }
 }
