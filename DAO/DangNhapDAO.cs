@@ -28,7 +28,9 @@ namespace DAO
                     adapter.Fill(dataSet);
                     return dataSet.Tables[0];
                 }
+                conn.Close();
             }
+            
         }
     }
 }

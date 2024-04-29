@@ -1,31 +1,32 @@
-﻿using DAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO;
+
 namespace BLL
 {
-    public class LoadNhanPhongBLL
+    public class TimMaPhongBLL
     {
-
-        DAO.loadNhanPhongDAO LoadNhanPhong;
-        public LoadNhanPhongBLL()
+        
+        DAO.TimMaPhongDAO TimMaPhong;
+        public TimMaPhongBLL()
         {
-            LoadNhanPhong = new DAO.loadNhanPhongDAO();
+            TimMaPhong = new DAO.TimMaPhongDAO();
         }
-        public List<object> getDSnhanphong()
+        public List<object> getDSnhanphongbymaphong(String maphong)
         {
             var list = new List<object>();
-            var data = LoadNhanPhong.GetDSnhanphong();
+            var data = TimMaPhong.GetDSNPbyMaphong(maphong);
             foreach (var item in data.Rows)
             {
                 list.Add(new
                 {
                     MAPHONG = ((DataRow)item)["MAPHONG"]?.ToString(),
                     SOPHONG = int.Parse(((DataRow)item)["SOPHONG"]?.ToString()),
-                    MAKH = ((DataRow)item)["MAKH"]?.ToString(), 
+                    MAKH = ((DataRow)item)["MAKH"]?.ToString(),
                     TENKH = ((DataRow)item)["TENKH"]?.ToString(),
                     CCCD = ((DataRow)item)["CCCD"]?.ToString(),
                     LOAIPHONG = ((DataRow)item)["LOAIPHONG"]?.ToString(),
@@ -35,8 +36,10 @@ namespace BLL
                     NGAYDEN = ((DataRow)item)["NGAYDEN"]?.ToString(), // Cột NGAYDEN đến từ bảng KHACHHANG
                     NGAYNHANPHONG = ((DataRow)item)["NGAYNHANPHONG"]?.ToString()
                 });
+
             }
             return list;
         }
     }
+ 
 }
