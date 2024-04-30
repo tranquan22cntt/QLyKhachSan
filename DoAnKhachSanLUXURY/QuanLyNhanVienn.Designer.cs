@@ -309,6 +309,7 @@
             txtloainhanvien.Name = "txtloainhanvien";
             txtloainhanvien.Size = new System.Drawing.Size(291, 29);
             txtloainhanvien.TabIndex = 6;
+            txtloainhanvien.SelectedIndexChanged += txtloainhanvien_SelectedIndexChanged;
             // 
             // btnTimKiem
             // 

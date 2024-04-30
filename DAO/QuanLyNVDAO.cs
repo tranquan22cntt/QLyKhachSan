@@ -49,6 +49,8 @@
         //}
 
 
+
+        // them nhan vien
         public void Addtv(string matv, string ten, int sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
         {
             string query = $"INSERT INTO tapvu (matv, tentv, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh) VALUES ('{matv}','{ten}', '{sdt}', '{cccd}', '{diachi}', '{ngaysinh}', '{ngayvaolam}', '{gioitinh}')";
@@ -84,5 +86,81 @@
             }
         }
 
+        //xoa nhan vien
+
+        public bool XoaNhanVienTapVu(string matv)
+        {
+            string query = $"DELETE FROM tapvu WHERE matv = '{matv}'";
+            return ExecuteNonQuery(query);
         }
+
+        public bool XoaNhanVienThuNgan(string matn)
+        {
+            string query = $"DELETE FROM thungan WHERE matn = '{matn}'";
+            return ExecuteNonQuery(query);
+        }
+
+        public bool XoaNhanVienTiepTan(string matt)
+        {
+            string query = $"DELETE FROM tieptan WHERE matt = '{matt}'";
+            return ExecuteNonQuery(query);
+        }
+
+        private bool ExecuteNonQuery(string query)
+        {
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+                return rowsAffected > 0;
+            }
+        }
+
+
+        // load data
+        public DataTable LoadTapVuData()
+        {
+            string query = "SELECT * FROM tapvu";
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    return dataSet.Tables[0];
+                }
+            }
+        }
+
+        public DataTable LoadThuNganData()
+        {
+            string query = "SELECT * FROM thungan";
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    return dataSet.Tables[0];
+                }
+            }
+        }
+
+        public DataTable LoadTiepTanData()
+        {
+            string query = "SELECT * FROM tieptan";
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    return dataSet.Tables[0];
+                }
+            }
+        }
+
+    }
     }

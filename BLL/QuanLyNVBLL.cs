@@ -1,6 +1,7 @@
 ﻿using DAO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,5 +33,39 @@ namespace BLL
             dao.Addtt(matt, ten, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh);
             return true;
         }
+
+        public bool XoaNhanVien(string maNhanVien, string loaiNhanVien)
+        {
+            switch (loaiNhanVien)
+            {
+                case "1":
+                    return dao.XoaNhanVienTapVu(maNhanVien);
+                case "2":
+                    return dao.XoaNhanVienThuNgan(maNhanVien);
+                case "3":
+                    return dao.XoaNhanVienTiepTan(maNhanVien);
+                default:
+                    return false;
+            }
+        }
+
+        //load data
+
+        public DataTable LoadTapVuData()
+        {
+            return dao.LoadTapVuData();
+        }
+
+        public DataTable LoadThuNganData()
+        {
+            return dao.LoadThuNganData();
+        }
+
+        public DataTable LoadTiepTanData()
+        {
+            return dao.LoadTiepTanData();
+        }
+
+
     }
 }
