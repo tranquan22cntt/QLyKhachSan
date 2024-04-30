@@ -65,6 +65,7 @@
             Controls.Add(label1);
             Name = "frmQuyDinh";
             Text = "QuyDinh";
+            WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
