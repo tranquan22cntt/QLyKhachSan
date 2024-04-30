@@ -9,7 +9,7 @@ namespace DAO
 {
     public class KetNoi
     {
-        private const string ConnectionString = @"Data Source=DESKTOP-JK7J6BR\SQLEXPRESS;Initial Catalog=DoAnKhachSan;Integrated Security=True";
+        private const string ConnectionString = @"Data Source=LAPTOP-GA9J10NA\SQLEXPRESS;Initial Catalog=DoAnKhachSan;Integrated Security=True";
 
         public SqlConnection Connect()
         {
