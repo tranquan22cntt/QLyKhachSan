@@ -86,6 +86,19 @@
             }
         }
 
+        public bool Addtk(string matk, string username, string matkhau)
+        {
+            string query = $"INSERT INTO TAIKHOAN (MATK, USERNAME, MATKHAU) VALUES ('{matk}', '{username}', '{matkhau}')";
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+                return rowsAffected > 0;
+            }
+        }
+
         //xoa nhan vien
 
         public bool XoaNhanVienTapVu(string matv)
@@ -159,6 +172,55 @@
                     adapter.Fill(dataSet);
                     return dataSet.Tables[0];
                 }
+            }
+        }
+
+        public DataTable TimKiemTapVu(string tukhoa)
+        {
+            string query = $"SELECT * FROM TapVu WHERE MaTV LIKE '%{tukhoa}%' OR TenTV LIKE '%{tukhoa}%' OR SDT LIKE '%{tukhoa}%' OR CCCD LIKE '%{tukhoa}%'";
+
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                conn.Close();
+
+                return dt;
+            }
+        }
+
+
+        public DataTable TimKiemThuNgan(string tukhoa)
+        {
+            string query = $"SELECT * FROM ThuNgan WHERE MaTN LIKE '%{tukhoa}%' OR TenTN LIKE '%{tukhoa}%' OR SDT LIKE '%{tukhoa}%' OR CCCD LIKE '%{tukhoa}%'";
+
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                conn.Close();
+
+                return dt;
+            }
+        }
+
+        public DataTable TimKiemTiepTan(string tukhoa)
+        {
+            string query = $"SELECT * FROM TiepTan WHERE MaTT LIKE '%{tukhoa}%' OR TenTT LIKE '%{tukhoa}%' OR SDT LIKE '%{tukhoa}%' OR CCCD LIKE '%{tukhoa}%'";
+
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                conn.Close();
+
+                return dt;
             }
         }
 

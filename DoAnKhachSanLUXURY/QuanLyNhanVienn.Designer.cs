@@ -304,7 +304,7 @@
             // txtloainhanvien
             // 
             txtloainhanvien.FormattingEnabled = true;
-            txtloainhanvien.Items.AddRange(new object[] { "1", "2", "3" });
+            txtloainhanvien.Items.AddRange(new object[] { "Tạp vụ", "Thu ngân", "Tiếp tân" });
             txtloainhanvien.Location = new System.Drawing.Point(22, 134);
             txtloainhanvien.Name = "txtloainhanvien";
             txtloainhanvien.Size = new System.Drawing.Size(291, 29);
@@ -319,6 +319,7 @@
             btnTimKiem.TabIndex = 2;
             btnTimKiem.Text = "Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // txtTimKiem
             // 
@@ -326,6 +327,7 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new System.Drawing.Size(291, 28);
             txtTimKiem.TabIndex = 1;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // 
             // label2
             // 

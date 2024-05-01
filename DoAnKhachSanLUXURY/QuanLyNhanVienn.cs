@@ -52,29 +52,31 @@ namespace DoAnKhachSanLUXURY
             }
 
             QuanLyNVBLL quanLyNVBLL = new QuanLyNVBLL();
-            string mess;
+            string thongbao;
             bool check = false;
 
-            string LoaiNhanVien;
-            switch (LoaiNhanVien = txtloainhanvien.Text)
+            switch (txtloainhanvien.Text)
             {
-                case "1":
+                case "Tạp vụ":
                     check = quanLyNVBLL.Addtv(manv, ten, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh);
-                    mess = check ? "Thêm nhân viên tạp vụ thành công." : "Thêm nhân viên tạp vụ không thành công.";
+                    thongbao = check ? "Thêm nhân viên tạp vụ thành công." : "Thêm nhân viên tạp vụ không thành công.";
+                    dgvDanhSachNhanVien.DataSource = bll.LoadTapVuData();
                     break;
-                case "2":
+                case "Thu ngân":
                     check = quanLyNVBLL.Addtn(manv, ten, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh);
-                    mess = check ? "Thêm nhân viên thu ngân thành công." : "Thêm nhân viên thu ngân không thành công.";
+                    thongbao = check ? "Thêm nhân viên thu ngân thành công." : "Thêm nhân viên thu ngân không thành công.";
+                    dgvDanhSachNhanVien.DataSource = bll.LoadThuNganData();
                     break;
-                case "3":
+                case "Tiếp tân":
                     check = quanLyNVBLL.Addtt(manv, ten, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh);
-                    mess = check ? "Thêm nhân viên tiếp tân thành công." : "Thêm nhân viên tiếp tân không thành công.";
+                    thongbao = check ? "Thêm nhân viên tiếp tân thành công." : "Thêm nhân viên tiếp tân không thành công.";
+                    dgvDanhSachNhanVien.DataSource = bll.LoadTiepTanData(); ;
                     break;
                 default:
-                    mess = "Loại nhân viên không hợp lệ.";
+                    thongbao = "Loại nhân viên không hợp lệ.";
                     break;
             }
-            MessageBox.Show(mess);
+            MessageBox.Show(thongbao);
             ClearAll();
         }
 
@@ -95,19 +97,32 @@ namespace DoAnKhachSanLUXURY
                 return;
             }
 
-            DialogResult rs = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            DialogResult rs = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (rs == DialogResult.Yes)
             {
                 QuanLyNVBLL quanLyNVBLL = new QuanLyNVBLL();
-                bool xoaThanhCong = quanLyNVBLL.XoaNhanVien(manv, loainv);
+                //bool xoaThanhCong = quanLyNVBLL.XoaNhanVien(manv, loainv);
 
-                if (xoaThanhCong)
+                if (quanLyNVBLL.XoaNhanVien(manv, loainv))
                 {
-                    MessageBox.Show("Đã xóa nhân viên thành công.");
+                    MessageBox.Show("Đã xóa nhân viên thành công.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearAll();
+                    switch (loainv)
+                    {
+                        case "Tạp vụ":
+                            dgvDanhSachNhanVien.DataSource = quanLyNVBLL.LoadTapVuData();
+                            break;
+                        case "Thu ngân":
+                            dgvDanhSachNhanVien.DataSource = quanLyNVBLL.LoadThuNganData();
+                            break;
+                        case "Tiếp tân":
+                            dgvDanhSachNhanVien.DataSource = quanLyNVBLL.LoadTiepTanData();
+                            break;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Xóa nhân viên không thành công. Vui lòng thử lại.");
+                    MessageBox.Show("Xóa nhân viên không thành công. Vui lòng thử lại.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -131,7 +146,7 @@ namespace DoAnKhachSanLUXURY
             txtsdt.Clear();
             txtdiachi.Clear();
             txtCCCD.Clear();
-            txtloainhanvien.SelectedIndex = -1;
+            //txtloainhanvien.SelectedIndex = -1;
             txtTenDangNhap.Clear();
             cbGioiTinh.SelectedIndex = -1;
         }
@@ -139,18 +154,53 @@ namespace DoAnKhachSanLUXURY
         private void txtloainhanvien_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string loainv = txtloainhanvien.SelectedItem.ToString();
-            string loainv;
-            switch (loainv = txtloainhanvien.Text)
+            switch (txtloainhanvien.Text)
             {
-                case "1":
+                case "Tạp vụ":
                     dgvDanhSachNhanVien.DataSource = bll.LoadTapVuData();
                     break;
-                case "2":
+                case "Thu ngân":
                     dgvDanhSachNhanVien.DataSource = bll.LoadThuNganData();
                     break;
-                case "3":
+                case "Tiếp tân":
                     dgvDanhSachNhanVien.DataSource = bll.LoadTiepTanData();
                     break;
+            }
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string tk = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrEmpty(tk))
+            {
+                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (bll.TimKiemTapVu(tk).Rows.Count > 0)
+            {
+                dgvDanhSachNhanVien.DataSource = bll.TimKiemTapVu(tk);
+                txtTimKiem.Clear();
+            }
+            else if (bll.TimKiemThuNgan(tk).Rows.Count > 0)
+            {
+                dgvDanhSachNhanVien.DataSource = bll.TimKiemThuNgan(tk);
+                txtTimKiem.Clear();
+            }
+            else if (bll.TimKiemTiepTan(tk).Rows.Count > 0)
+            {
+                dgvDanhSachNhanVien.DataSource = bll.TimKiemTiepTan(tk);
+                txtTimKiem.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy thông tin cho từ khóa đã nhập.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
