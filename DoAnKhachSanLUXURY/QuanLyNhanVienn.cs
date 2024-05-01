@@ -87,13 +87,13 @@ namespace DoAnKhachSanLUXURY
 
             if (string.IsNullOrEmpty(manv))
             {
-                MessageBox.Show("Vui lòng nhập mã nhân viên.");
+                MessageBox.Show("Vui lòng nhập mã nhân viên.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             if (string.IsNullOrEmpty(loainv))
             {
-                MessageBox.Show("Vui lòng chọn loại nhân viên.");
+                MessageBox.Show("Vui lòng chọn loại nhân viên.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -186,17 +186,14 @@ namespace DoAnKhachSanLUXURY
             if (bll.TimKiemTapVu(tk).Rows.Count > 0)
             {
                 dgvDanhSachNhanVien.DataSource = bll.TimKiemTapVu(tk);
-                txtTimKiem.Clear();
             }
             else if (bll.TimKiemThuNgan(tk).Rows.Count > 0)
             {
                 dgvDanhSachNhanVien.DataSource = bll.TimKiemThuNgan(tk);
-                txtTimKiem.Clear();
             }
             else if (bll.TimKiemTiepTan(tk).Rows.Count > 0)
             {
                 dgvDanhSachNhanVien.DataSource = bll.TimKiemTiepTan(tk);
-                txtTimKiem.Clear();
             }
             else
             {
