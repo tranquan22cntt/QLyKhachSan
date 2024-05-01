@@ -38,11 +38,11 @@ namespace BLL
         {
             switch (loaiNhanVien)
             {
-                case "1":
+                case "Tạp vụ":
                     return dao.XoaNhanVienTapVu(maNhanVien);
-                case "2":
+                case "Thu ngân":
                     return dao.XoaNhanVienThuNgan(maNhanVien);
-                case "3":
+                case "Tiếp tân":
                     return dao.XoaNhanVienTiepTan(maNhanVien);
                 default:
                     return false;
@@ -64,6 +64,22 @@ namespace BLL
         public DataTable LoadTiepTanData()
         {
             return dao.LoadTiepTanData();
+        }
+
+
+        public DataTable TimKiemTapVu(string tukhoa)
+        {
+            return dao.TimKiemTapVu(tukhoa);
+        }
+
+        public DataTable TimKiemThuNgan(string tukhoa)
+        {
+            return dao.TimKiemThuNgan(tukhoa);
+        }
+
+        public DataTable TimKiemTiepTan(string tukhoa)
+        {
+            return dao.TimKiemTiepTan(tukhoa);
         }
 
 
