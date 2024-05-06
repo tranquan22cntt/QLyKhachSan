@@ -34,6 +34,8 @@
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            txtSoluong = new System.Windows.Forms.TextBox();
+            label7 = new System.Windows.Forms.Label();
             txtMadv = new System.Windows.Forms.TextBox();
             txtTenDichVu = new System.Windows.Forms.TextBox();
             txtGia = new System.Windows.Forms.TextBox();
@@ -43,15 +45,13 @@
             cbLoaiDichVu = new System.Windows.Forms.ComboBox();
             label3 = new System.Windows.Forms.Label();
             groupBox3 = new System.Windows.Forms.GroupBox();
+            btnReload = new System.Windows.Forms.Button();
             btnDong = new System.Windows.Forms.Button();
-            btnSuaLoaiDichVu = new System.Windows.Forms.Button();
+            txtXoadv = new System.Windows.Forms.Button();
             btnCapNhat = new System.Windows.Forms.Button();
             btnThem = new System.Windows.Forms.Button();
             groupBox4 = new System.Windows.Forms.GroupBox();
             dgvDsdichvu = new System.Windows.Forms.DataGridView();
-            label7 = new System.Windows.Forms.Label();
-            txtSoluong = new System.Windows.Forms.TextBox();
-            btnReload = new System.Windows.Forms.Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -137,6 +137,23 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin dịch vụ";
             // 
+            // txtSoluong
+            // 
+            txtSoluong.Location = new System.Drawing.Point(15, 275);
+            txtSoluong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtSoluong.Name = "txtSoluong";
+            txtSoluong.Size = new System.Drawing.Size(172, 24);
+            txtSoluong.TabIndex = 10;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(17, 256);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(63, 17);
+            label7.TabIndex = 9;
+            label7.Text = "Số lượng";
+            // 
             // txtMadv
             // 
             txtMadv.Location = new System.Drawing.Point(15, 47);
@@ -211,7 +228,7 @@
             // 
             groupBox3.Controls.Add(btnReload);
             groupBox3.Controls.Add(btnDong);
-            groupBox3.Controls.Add(btnSuaLoaiDichVu);
+            groupBox3.Controls.Add(txtXoadv);
             groupBox3.Controls.Add(btnCapNhat);
             groupBox3.Controls.Add(btnThem);
             groupBox3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
@@ -225,6 +242,17 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Chức năng";
             // 
+            // btnReload
+            // 
+            btnReload.Location = new System.Drawing.Point(20, 265);
+            btnReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new System.Drawing.Size(133, 34);
+            btnReload.TabIndex = 4;
+            btnReload.Text = "Reload";
+            btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
+            // 
             // btnDong
             // 
             btnDong.Location = new System.Drawing.Point(20, 210);
@@ -236,15 +264,16 @@
             btnDong.UseVisualStyleBackColor = true;
             btnDong.Click += btnDong_Click;
             // 
-            // btnSuaLoaiDichVu
+            // txtXoadv
             // 
-            btnSuaLoaiDichVu.Location = new System.Drawing.Point(20, 154);
-            btnSuaLoaiDichVu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            btnSuaLoaiDichVu.Name = "btnSuaLoaiDichVu";
-            btnSuaLoaiDichVu.Size = new System.Drawing.Size(133, 34);
-            btnSuaLoaiDichVu.TabIndex = 2;
-            btnSuaLoaiDichVu.Text = "Sửa loại dịch vụ";
-            btnSuaLoaiDichVu.UseVisualStyleBackColor = true;
+            txtXoadv.Location = new System.Drawing.Point(20, 154);
+            txtXoadv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtXoadv.Name = "txtXoadv";
+            txtXoadv.Size = new System.Drawing.Size(133, 34);
+            txtXoadv.TabIndex = 2;
+            txtXoadv.Text = "Xoá dịch vụ";
+            txtXoadv.UseVisualStyleBackColor = true;
+            txtXoadv.Click += txtXoadv_Click;
             // 
             // btnCapNhat
             // 
@@ -255,6 +284,7 @@
             btnCapNhat.TabIndex = 1;
             btnCapNhat.Text = "Cập nhật";
             btnCapNhat.UseVisualStyleBackColor = true;
+            btnCapNhat.Click += btnCapNhat_Click;
             // 
             // btnThem
             // 
@@ -293,33 +323,6 @@
             dgvDsdichvu.Size = new System.Drawing.Size(447, 383);
             dgvDsdichvu.TabIndex = 0;
             dgvDsdichvu.SelectionChanged += dgvDanhSachNhanPhongTrongNgay_SelectionChanged;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(17, 256);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(63, 17);
-            label7.TabIndex = 9;
-            label7.Text = "Số lượng";
-            // 
-            // txtSoluong
-            // 
-            txtSoluong.Location = new System.Drawing.Point(15, 275);
-            txtSoluong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            txtSoluong.Name = "txtSoluong";
-            txtSoluong.Size = new System.Drawing.Size(172, 24);
-            txtSoluong.TabIndex = 10;
-            // 
-            // btnReload
-            // 
-            btnReload.Location = new System.Drawing.Point(20, 265);
-            btnReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            btnReload.Name = "btnReload";
-            btnReload.Size = new System.Drawing.Size(133, 34);
-            btnReload.TabIndex = 4;
-            btnReload.Text = "Reload";
-            btnReload.UseVisualStyleBackColor = true;
             // 
             // frmQuanLyDichVu
             // 
@@ -363,7 +366,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnDong;
-        private System.Windows.Forms.Button btnSuaLoaiDichVu;
+        private System.Windows.Forms.Button txtXoadv;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.GroupBox groupBox4;
