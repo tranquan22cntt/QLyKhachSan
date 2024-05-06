@@ -1,6 +1,7 @@
 ﻿    using BLL;
     using DAO;
-    using DevExpress.XtraEditors;
+using DevExpress.Data.Svg;
+using DevExpress.XtraEditors;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -20,7 +21,8 @@ using System.Drawing;
         XemPhongTrongBLL XemPhongtrong;
         ThemKhachHangDAO themKhachHangDAO;
         ThemKhachHangBLL themKhachHangBLL;
-
+        NhanPhongBLL nhanphong;
+        HuyPhongBLL HuyPhong;
         public frmNhanPhong()
         {
             InitializeComponent();
@@ -28,7 +30,8 @@ using System.Drawing;
             XemPhongtrong = new XemPhongTrongBLL();
             themKhachHangDAO = new ThemKhachHangDAO();
             themKhachHangBLL = new ThemKhachHangBLL();
-
+            nhanphong = new NhanPhongBLL();
+            HuyPhong = new HuyPhongBLL();
         }
 
         private void frmNhanPhong_Load(object sender, EventArgs e)
@@ -41,7 +44,7 @@ using System.Drawing;
         }
         private void LoadPhongtrong()
         {
-            dgvDanhSachNhanPhongTrongNgay.DataSource = XemPhongtrong.getDSphongtrong();
+            dgvDanhSachNhanPhongTrongNgay.DataSource = XemPhongtrong.GetDSPhongTrong();
         }
         private void btnReload_Click(object sender, EventArgs e)
         {
@@ -91,7 +94,9 @@ using System.Drawing;
                 string soLuongNguoiToiDa = selectedRow.Cells["SUCCHUA"].Value?.ToString(); // Đổi tên cột nếu cần
                 string tenLoaiPhong = selectedRow.Cells["LOAIPHONG"].Value?.ToString();
                 string gia = selectedRow.Cells["GIATIEN"].Value?.ToString();
-
+                string sdt = selectedRow.Cells["SDT"].Value?.ToString();
+                string quocTich = selectedRow.Cells["QUOCTICH"].Value?.ToString();
+                string maPhong = selectedRow.Cells["MAPHONG"].Value?.ToString();
                 // Cập nhật giá trị của các điều khiển khác
                 txtHoVaTen.Text = hoVaTen;
                 dtpNgayNhan.Text = ngayNhan;
@@ -101,17 +106,24 @@ using System.Drawing;
                 txtSLNguoiToiDa.Text = soLuongNguoiToiDa;
                 txtTenLoaiPhong.Text = tenLoaiPhong;
                 txtGia.Text = gia;
+                txtSdt.Text = sdt;
+                txtQuoctich.Text = quocTich;
+                txtMaDatPhong.Text = maPhong;
             }
         }
 
         private void btnThemKhachHang_Click(object sender, EventArgs e)
         {
-            
+
             string maxMakh = themKhachHangDAO.GetMaxMakh();
 
             // Tạo Makh mới dựa trên Makh lớn nhất
             string newMakh = themKhachHangBLL.GenerateNewMakh(maxMakh);
-
+            if (!int.TryParse(txtSdt.Text.Trim(), out int sdt))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập một số nguyên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             KhachHangInfo khachHangInfo = new KhachHangInfo
             {
                 // Gán Makh mới cho thông tin khách hàng
@@ -121,9 +133,11 @@ using System.Drawing;
                 NgayNhan = dtpNgayNhan.Value,
                 NgayTra = dtpNgaytra.Value,
                 MaPhong = txtMaDatPhong.Text.Trim(),
-                SoPhong = txtTenPhong.Text.Trim()
+                SoPhong = txtTenPhong.Text.Trim(),
+                SDT = sdt,
+                QuocTich = txtQuoctich.Text.Trim()
             };
-            
+
             // Thêm khách hàng và cập nhật phòng
             try
             {
@@ -145,12 +159,85 @@ using System.Drawing;
 
         private void btnNhanPhong_Click(object sender, EventArgs e)
         {
+            string maPhong = txtMaDatPhong.Text.Trim();
 
+            // Kiểm tra xem mã phòng có được nhập hay không
+            if (string.IsNullOrEmpty(maPhong))
+            {
+                MessageBox.Show("Vui lòng nhập mã phòng cần nhận.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Gọi phương thức từ BLL hoặc DAO để cập nhật trạng thái phòng và thông báo kết quả cho người dùng
+                bool result = nhanphong.NhanPhong(maPhong); // Phương thức này trả về true nếu nhận phòng thành công, ngược lại trả về false
+
+                if (result)
+                {
+                    MessageBox.Show("Nhận phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Sau khi nhận phòng thành công, bạn có thể làm các thao tác khác, ví dụ: load lại danh sách phòng
+                    LoadNP();
+                }
+                else
+                {
+                    MessageBox.Show("Nhận phòng không thành công. Vui lòng thử lại sau.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi nhận phòng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void groupBox5_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbbLoaiPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTimphongtrong_Click(object sender, EventArgs e)
+        {
+            string loaiPhong = cbbLoaiPhong.SelectedItem.ToString();
+            var dataTable = XemPhongtrong.GetDSPhongTrongByLoaiPhong(loaiPhong);
+            dgvDanhSachNhanPhongTrongNgay.DataSource = dataTable;
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            string maPhong = txtMaDatPhong.Text.Trim();
+
+            // Kiểm tra xem mã phòng có được nhập hay không
+            if (string.IsNullOrEmpty(maPhong))
+            {
+                MessageBox.Show("Vui lòng nhập mã phòng cần huỷ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Gọi phương thức từ BLL để hủy phòng
+                bool result = HuyPhong.HuyPhong(maPhong); // Phương thức này trả về true nếu huỷ phòng thành công, ngược lại trả về false
+
+                if (result)
+                {
+                    MessageBox.Show("Huỷ phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Sau khi huỷ phòng thành công, bạn có thể làm các thao tác khác, ví dụ: load lại danh sách phòng
+                    LoadNP();
+                }
+                else
+                {
+                    MessageBox.Show("Huỷ phòng không thành công. Vui lòng thử lại sau.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi huỷ phòng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
