@@ -32,6 +32,7 @@ namespace BLL
                     GIATIEN = decimal.Parse(((DataRow)item)["GIATIEN"]?.ToString()),
                     SUCCHUA = int.Parse(((DataRow)item)["SUCCHUA"]?.ToString()),
                     SDT = int.Parse(((DataRow)item)["SDT"]?.ToString()), // Cột SDT đến từ bảng KHACHHANG
+                    QUOCTICH= ((DataRow)item)["QUOCTICH"]?.ToString(),
                     NGAYDEN = ((DataRow)item)["NGAYDEN"]?.ToString(), // Cột NGAYDEN đến từ bảng KHACHHANG
                     NGAYNHANPHONG = ((DataRow)item)["NGAYNHANPHONG"]?.ToString()
                 });

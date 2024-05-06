@@ -19,7 +19,7 @@ namespace DAO
 
         public void ThemKhachHangVaCapNhatPhong(SqlConnection conn, SqlTransaction transaction, KhachHangInfo khachHangInfo)
         {
-            string query = "EXEC ThemKhachHangVaCapNhatPhong @MAKH, @CCCD, @TENKH, @NGAYDEN, @NGAYNHANPHONG, @MAPHONG, @SOPHONG";
+            string query = "EXEC ThemKhachHangVaCapNhatPhong @MAKH, @CCCD, @TENKH, @NGAYDEN, @NGAYNHANPHONG, @MAPHONG, @SOPHONG,@SDT,@QUOCTICH";
 
             using (SqlCommand command = new SqlCommand(query, conn, transaction))
             {
@@ -30,7 +30,8 @@ namespace DAO
                 command.Parameters.AddWithValue("@NGAYNHANPHONG", khachHangInfo.NgayNhan);
                 command.Parameters.AddWithValue("@MAPHONG", khachHangInfo.MaPhong);
                 command.Parameters.AddWithValue("@SOPHONG", khachHangInfo.SoPhong);
-
+                command.Parameters.AddWithValue("@SDT", khachHangInfo.SDT);
+                command.Parameters.AddWithValue("@QUOCTICH", khachHangInfo.QuocTich);
                 try
                 {
                     command.ExecuteNonQuery();
@@ -96,6 +97,8 @@ namespace DAO
             public string CCCD { get; set; }
             public DateTime NgayNhan { get; set; }
             public DateTime NgayTra { get; set; }
+            public int SDT { get; set; }
+            public string QuocTich { get; set; }
         }
     }
 }

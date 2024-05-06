@@ -9,14 +9,23 @@ namespace BLL
 {
     public class ThemDichVuBLL
     {
-        DAO.ThemDichVuDao ThemDichVuDAO;
+        private ThemDichVuDAO themDichVuDAO;
+
         public ThemDichVuBLL()
         {
-            ThemDichVuDAO = new DAO.ThemDichVuDao();
+            themDichVuDAO = new ThemDichVuDAO();
         }
-        public bool ThemDichVu(string MADV, string SANPHAM, string loaidv, decimal GIATIEN, int SOLUONG)
+
+        public bool ThemDichVu(string maDichVu, string tenDichVu, decimal gia, string loaiDichVu,int soluong)
         {
-            return ThemDichVuDAO.ThemDichVu(MADV, SANPHAM, loaidv, GIATIEN, SOLUONG);
+            // Kiểm tra xem các thông tin đầu vào có hợp lệ không
+            if (string.IsNullOrEmpty(maDichVu) || string.IsNullOrEmpty(tenDichVu) || string.IsNullOrEmpty(loaiDichVu) || gia <= 0)
+            {
+                throw new ArgumentException("Thông tin dịch vụ không hợp lệ.");
+            }
+
+            // Gọi phương thức trong DAO để thêm dịch vụ vào cơ sở dữ liệu
+            return themDichVuDAO.ThemDichVu(maDichVu, tenDichVu, gia, loaiDichVu,soluong);
         }
     }
 }
