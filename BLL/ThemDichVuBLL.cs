@@ -16,7 +16,7 @@ namespace BLL
             themDichVuDAO = new ThemDichVuDAO();
         }
 
-        public bool ThemDichVu(string maDichVu, string tenDichVu, decimal gia, string loaiDichVu,int soluong)
+        public bool ThemDichVu(string maDichVu, string tenDichVu, string loaiDichVu, decimal gia,int soluong)
         {
             // Kiểm tra xem các thông tin đầu vào có hợp lệ không
             if (string.IsNullOrEmpty(maDichVu) || string.IsNullOrEmpty(tenDichVu) || string.IsNullOrEmpty(loaiDichVu) || gia <= 0)

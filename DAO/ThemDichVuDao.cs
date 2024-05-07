@@ -1,47 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAO
-{
-    public class ThemDichVuDao
+    namespace DAO
     {
-        private KetNoi ketNoi;
+        public class ThemDichVuDAO
+        {
+            private KetNoi ketNoi;
 
-        public ThemDichVuDao()
-        {
-            ketNoi = new KetNoi();
-        }
-        public bool ThemDichVu(string MADV, string SANPHAM, string loaidv, decimal GIATIEN, int SOLUONG)
-        {
-            using (SqlConnection conn = ketNoi.Connect())
+            public ThemDichVuDAO()
+            {
+                ketNoi = new KetNoi();
+            }
+
+            public bool ThemDichVu(string maDichVu, string tenDichVu, decimal gia, string loaiDichVu,int soluong)
             {
                 try
                 {
-                    string query = @"INSERT INTO DICHVU (MADV, SANPHAM, loaidv, GIATIEN, SOLUONG) VALUES (@MADV, @SANPHAM, @loaidv, @GIATIEN, @SOLUONG)";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@MADV", MADV);
-                    cmd.Parameters.AddWithValue("@SANPHAM", SANPHAM);
-                    cmd.Parameters.AddWithValue("@LOAIDV", loaidv);
-                    cmd.Parameters.AddWithValue("@GIATIEN", GIATIEN);
-                    cmd.Parameters.AddWithValue("@SOLUONG", SOLUONG);
+                // Chuỗi truy vấn SQL để thêm dịch vụ vào cơ sở dữ liệu
+                string query = "INSERT INTO DichVu (MADV, SANPHAM, GIATIEN, LOAIDV, SoLuong) VALUES (@MaDichVu, @TenDichVu, @Gia, @LoaiDichVu, @SoLuong)";
 
-                    cmd.ExecuteNonQuery();
-                    return true;
+                // Mở kết nối và thực hiện truy vấn
+                using (SqlConnection connection = ketNoi.Connect())
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            // Thêm các tham số vào truy vấn
+                            command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+                            command.Parameters.AddWithValue("@TenDichVu", tenDichVu);
+                            command.Parameters.AddWithValue("@Gia", gia);
+                            command.Parameters.AddWithValue("@LoaiDichVu", loaiDichVu);
+                            command.Parameters.AddWithValue("@SoLuong", soluong);
+                        // Mở kết nối
+                        connection.Open();
+
+                            // Thực hiện truy vấn thêm dịch vụ
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Kiểm tra xem có dòng nào bị ảnh hưởng không
+                            if (rowsAffected > 0)
+                            {
+                                // Nếu có, trả về true để thông báo đã thêm dịch vụ thành công
+                                return true;
+                            }
+                            else
+                            {
+                                // Nếu không, trả về false để thông báo lỗi không thêm được dịch vụ
+                                return false;
+                            }
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-                    return false;
-                }
-                finally
-                {
-                    conn.Close();
+                    // Xử lý nếu có lỗi
+                    throw ex;
                 }
             }
         }
     }
-}
