@@ -33,7 +33,7 @@
             btnTangSL = new System.Windows.Forms.Button();
             txtSoLuong = new System.Windows.Forms.TextBox();
             txtGia = new System.Windows.Forms.TextBox();
-            cbDichVu = new System.Windows.Forms.ComboBox();
+            cbSanPham = new System.Windows.Forms.ComboBox();
             cbLoaiDichVu = new System.Windows.Forms.ComboBox();
             btnThemDichVu = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
@@ -56,6 +56,8 @@
             dgvChinhSachPhuThu = new System.Windows.Forms.DataGridView();
             groupBox5 = new System.Windows.Forms.GroupBox();
             dgvHoaDonDichVu = new System.Windows.Forms.DataGridView();
+            txtMaDV = new System.Windows.Forms.TextBox();
+            label8 = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -68,11 +70,13 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(txtMaDV);
             groupBox1.Controls.Add(btnGiamSL);
             groupBox1.Controls.Add(btnTangSL);
             groupBox1.Controls.Add(txtSoLuong);
             groupBox1.Controls.Add(txtGia);
-            groupBox1.Controls.Add(cbDichVu);
+            groupBox1.Controls.Add(cbSanPham);
             groupBox1.Controls.Add(cbLoaiDichVu);
             groupBox1.Controls.Add(btnThemDichVu);
             groupBox1.Controls.Add(label5);
@@ -83,7 +87,7 @@
             groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
             groupBox1.Location = new System.Drawing.Point(12, 38);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(366, 314);
+            groupBox1.Size = new System.Drawing.Size(366, 386);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách dịch vụ";
@@ -91,7 +95,7 @@
             // btnGiamSL
             // 
             btnGiamSL.Image = Properties.Resources.minus;
-            btnGiamSL.Location = new System.Drawing.Point(318, 230);
+            btnGiamSL.Location = new System.Drawing.Point(317, 298);
             btnGiamSL.Name = "btnGiamSL";
             btnGiamSL.Size = new System.Drawing.Size(25, 24);
             btnGiamSL.TabIndex = 12;
@@ -101,7 +105,7 @@
             // btnTangSL
             // 
             btnTangSL.Image = Properties.Resources.plus_button;
-            btnTangSL.Location = new System.Drawing.Point(318, 197);
+            btnTangSL.Location = new System.Drawing.Point(317, 265);
             btnTangSL.Name = "btnTangSL";
             btnTangSL.Size = new System.Drawing.Size(24, 27);
             btnTangSL.TabIndex = 11;
@@ -110,47 +114,48 @@
             // 
             // txtSoLuong
             // 
-            txtSoLuong.Location = new System.Drawing.Point(22, 214);
+            txtSoLuong.Location = new System.Drawing.Point(24, 283);
             txtSoLuong.Name = "txtSoLuong";
             txtSoLuong.Size = new System.Drawing.Size(321, 28);
             txtSoLuong.TabIndex = 10;
             // 
             // txtGia
             // 
-            txtGia.Location = new System.Drawing.Point(22, 159);
+            txtGia.Location = new System.Drawing.Point(24, 231);
             txtGia.Name = "txtGia";
             txtGia.Size = new System.Drawing.Size(321, 28);
             txtGia.TabIndex = 9;
             // 
-            // cbDichVu
+            // cbSanPham
             // 
-            cbDichVu.FormattingEnabled = true;
-            cbDichVu.Location = new System.Drawing.Point(22, 103);
-            cbDichVu.Name = "cbDichVu";
-            cbDichVu.Size = new System.Drawing.Size(321, 29);
-            cbDichVu.TabIndex = 6;
+            cbSanPham.FormattingEnabled = true;
+            cbSanPham.Location = new System.Drawing.Point(22, 115);
+            cbSanPham.Name = "cbSanPham";
+            cbSanPham.Size = new System.Drawing.Size(321, 29);
+            cbSanPham.TabIndex = 6;
             // 
             // cbLoaiDichVu
             // 
             cbLoaiDichVu.FormattingEnabled = true;
-            cbLoaiDichVu.Location = new System.Drawing.Point(22, 47);
+            cbLoaiDichVu.Location = new System.Drawing.Point(24, 175);
             cbLoaiDichVu.Name = "cbLoaiDichVu";
             cbLoaiDichVu.Size = new System.Drawing.Size(321, 29);
             cbLoaiDichVu.TabIndex = 5;
             // 
             // btnThemDichVu
             // 
-            btnThemDichVu.Location = new System.Drawing.Point(97, 262);
+            btnThemDichVu.Location = new System.Drawing.Point(94, 326);
             btnThemDichVu.Name = "btnThemDichVu";
             btnThemDichVu.Size = new System.Drawing.Size(188, 37);
             btnThemDichVu.TabIndex = 4;
             btnThemDichVu.Text = "Thêm dịch vụ";
             btnThemDichVu.UseVisualStyleBackColor = true;
+            btnThemDichVu.Click += btnThemDichVu_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(22, 190);
+            label5.Location = new System.Drawing.Point(22, 259);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(80, 21);
             label5.TabIndex = 3;
@@ -159,7 +164,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(22, 135);
+            label4.Location = new System.Drawing.Point(22, 207);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(40, 21);
             label4.TabIndex = 2;
@@ -168,16 +173,16 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(22, 79);
+            label3.Location = new System.Drawing.Point(24, 91);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(71, 21);
+            label3.Size = new System.Drawing.Size(89, 21);
             label3.TabIndex = 1;
-            label3.Text = "Dịch vụ:";
+            label3.Text = "Sản Phẩm:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(22, 24);
+            label2.Location = new System.Drawing.Point(24, 151);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(103, 21);
             label2.TabIndex = 0;
@@ -206,7 +211,7 @@
             groupBox2.Controls.Add(label6);
             groupBox2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox2.ForeColor = System.Drawing.Color.SteelBlue;
-            groupBox2.Location = new System.Drawing.Point(12, 358);
+            groupBox2.Location = new System.Drawing.Point(12, 438);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(366, 228);
             groupBox2.TabIndex = 1;
@@ -289,7 +294,7 @@
             groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
             groupBox3.Location = new System.Drawing.Point(399, 38);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(504, 124);
+            groupBox3.Size = new System.Drawing.Size(504, 169);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Hóa đơn tiền phòng";
@@ -298,10 +303,10 @@
             // 
             dgvHoaDonTienPhong.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dgvHoaDonTienPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHoaDonTienPhong.Location = new System.Drawing.Point(6, 19);
+            dgvHoaDonTienPhong.Location = new System.Drawing.Point(6, 24);
             dgvHoaDonTienPhong.Name = "dgvHoaDonTienPhong";
             dgvHoaDonTienPhong.RowHeadersWidth = 51;
-            dgvHoaDonTienPhong.Size = new System.Drawing.Size(492, 97);
+            dgvHoaDonTienPhong.Size = new System.Drawing.Size(492, 144);
             dgvHoaDonTienPhong.TabIndex = 0;
             // 
             // groupBox4
@@ -310,7 +315,7 @@
             groupBox4.Controls.Add(dgvChinhSachPhuThu);
             groupBox4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox4.ForeColor = System.Drawing.Color.SteelBlue;
-            groupBox4.Location = new System.Drawing.Point(399, 168);
+            groupBox4.Location = new System.Drawing.Point(399, 228);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new System.Drawing.Size(504, 150);
             groupBox4.TabIndex = 1;
@@ -326,6 +331,7 @@
             dgvChinhSachPhuThu.RowHeadersWidth = 51;
             dgvChinhSachPhuThu.Size = new System.Drawing.Size(492, 124);
             dgvChinhSachPhuThu.TabIndex = 0;
+            dgvChinhSachPhuThu.CellContentClick += dgvChinhSachPhuThu_CellContentClick;
             // 
             // groupBox5
             // 
@@ -333,7 +339,7 @@
             groupBox5.Controls.Add(dgvHoaDonDichVu);
             groupBox5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox5.ForeColor = System.Drawing.Color.SteelBlue;
-            groupBox5.Location = new System.Drawing.Point(399, 324);
+            groupBox5.Location = new System.Drawing.Point(399, 404);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new System.Drawing.Size(504, 262);
             groupBox5.TabIndex = 1;
@@ -349,12 +355,29 @@
             dgvHoaDonDichVu.RowHeadersWidth = 51;
             dgvHoaDonDichVu.Size = new System.Drawing.Size(492, 233);
             dgvHoaDonDichVu.TabIndex = 0;
+            dgvHoaDonDichVu.CellContentClick += dgvHoaDonDichVu_CellContentClick;
+            // 
+            // txtMaDV
+            // 
+            txtMaDV.Location = new System.Drawing.Point(24, 60);
+            txtMaDV.Name = "txtMaDV";
+            txtMaDV.Size = new System.Drawing.Size(321, 28);
+            txtMaDV.TabIndex = 13;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(19, 36);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(95, 21);
+            label8.TabIndex = 14;
+            label8.Text = "Mã dịch vụ:";
             // 
             // frmQuanLyHoaDon
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(943, 598);
+            ClientSize = new System.Drawing.Size(943, 690);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -363,6 +386,7 @@
             Controls.Add(groupBox1);
             Name = "frmQuanLyHoaDon";
             Text = "QuanLyHoaDon";
+            Load += frmQuanLyHoaDon_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -386,7 +410,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtGia;
-        private System.Windows.Forms.ComboBox cbDichVu;
+        private System.Windows.Forms.ComboBox cbSanPham;
         private System.Windows.Forms.ComboBox cbLoaiDichVu;
         private System.Windows.Forms.Button btnThemDichVu;
         private System.Windows.Forms.Label label5;
@@ -407,5 +431,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnTangGia;
         private System.Windows.Forms.Button btnGiamGia;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtMaDV;
     }
 }
