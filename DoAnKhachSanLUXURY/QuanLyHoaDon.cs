@@ -18,6 +18,7 @@ namespace DoAnKhachSanLUXURY
         private int quantity = 0;
         LoadDVBLL themDichVuBLL;
         HoaDonTienPhongBLL HoaDonTienPhongBLL;
+        ThanhToanBLL ThanhToanBLL;
         public frmQuanLyHoaDon()
         {
             InitializeComponent();
@@ -106,6 +107,62 @@ namespace DoAnKhachSanLUXURY
         private void dgvChinhSachPhuThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTongTien.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một hóa đơn để thanh toán.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra xem người dùng đã nhập giảm giá chưa
+            if (string.IsNullOrWhiteSpace(txtGiamGia.Text))
+            {
+                MessageBox.Show("Vui lòng nhập giảm giá.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra xem người dùng đã nhập giảm giá hợp lệ chưa
+            if (!decimal.TryParse(txtGiamGia.Text, out decimal giamGia) || giamGia < 0 || giamGia >= Convert.ToDecimal(txtTongTien.Text))
+            {
+                MessageBox.Show("Giảm giá không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Tính tổng tiền cần thanh toán sau khi áp dụng giảm giá
+            decimal tongTien = Convert.ToDecimal(txtTongTien.Text) - giamGia;
+
+            // Hiển thị thông báo
+            MessageBox.Show("Đã thanh toán thành công. Tổng tiền cần thanh toán là: " + tongTien.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Sau khi thanh toán xong, đặt lại giá trị của TextBox tổng tiền và TextBox giảm giá
+            txtTongTien.Text = "";
+            txtGiamGia.Text = "";
+        }
+
+        private DataGridViewRow selectedTienPhongRow;
+        private DataGridViewRow selectedDichVuRow;
+
+        private void dgvHoaDonTienPhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvHoaDonTienPhong.Rows[e.RowIndex];
+                string TONGTHANHTOAN = row.Cells["TONGTHANHTOAN"].Value.ToString();
+                txtTongTien.Text = TONGTHANHTOAN;
+
+            }
+        }
+
+        private void dgvHoaDonDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvHoaDonDichVu.Rows[e.RowIndex];
+                string TONGTHANHTOAN = row.Cells["GIATIEN"].Value.ToString();
+                txtTongTien.Text = TONGTHANHTOAN;
+            }
         }
     }
 }

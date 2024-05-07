@@ -34,7 +34,7 @@
             label2 = new System.Windows.Forms.Label();
             btnTimKiem = new System.Windows.Forms.Button();
             groupBox2 = new System.Windows.Forms.GroupBox();
-            cbbPhong = new System.Windows.Forms.ComboBox();
+            btnTimphongtrong = new System.Windows.Forms.Button();
             cbbLoaiPhong = new System.Windows.Forms.ComboBox();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -44,6 +44,10 @@
             dgvDanhSachNhanPhongTrongNgay = new System.Windows.Forms.DataGridView();
             btnXemChiTiet = new System.Windows.Forms.Button();
             groupBox4 = new System.Windows.Forms.GroupBox();
+            txtQuoctich = new System.Windows.Forms.TextBox();
+            label14 = new System.Windows.Forms.Label();
+            txtSdt = new System.Windows.Forms.TextBox();
+            label13 = new System.Windows.Forms.Label();
             dtpNgaytra = new System.Windows.Forms.DateTimePicker();
             dtpNgayNhan = new System.Windows.Forms.DateTimePicker();
             txtGia = new System.Windows.Forms.TextBox();
@@ -119,10 +123,10 @@
             // 
             // btnTimKiem
             // 
-            btnTimKiem.Location = new System.Drawing.Point(21, 82);
+            btnTimKiem.Location = new System.Drawing.Point(21, 78);
             btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new System.Drawing.Size(150, 24);
+            btnTimKiem.Size = new System.Drawing.Size(150, 32);
             btnTimKiem.TabIndex = 0;
             btnTimKiem.Text = "Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = true;
@@ -130,7 +134,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(cbbPhong);
+            groupBox2.Controls.Add(btnTimphongtrong);
             groupBox2.Controls.Add(cbbLoaiPhong);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label3);
@@ -145,32 +149,35 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách phòng trống";
             // 
-            // cbbPhong
+            // btnTimphongtrong
             // 
-            cbbPhong.FormattingEnabled = true;
-            cbbPhong.Location = new System.Drawing.Point(23, 84);
-            cbbPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            cbbPhong.Name = "cbbPhong";
-            cbbPhong.Size = new System.Drawing.Size(151, 25);
-            cbbPhong.TabIndex = 3;
+            btnTimphongtrong.Location = new System.Drawing.Point(23, 78);
+            btnTimphongtrong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            btnTimphongtrong.Name = "btnTimphongtrong";
+            btnTimphongtrong.Size = new System.Drawing.Size(150, 32);
+            btnTimphongtrong.TabIndex = 3;
+            btnTimphongtrong.Text = "Tìm phòng";
+            btnTimphongtrong.UseVisualStyleBackColor = true;
+            btnTimphongtrong.Click += btnTimphongtrong_Click;
             // 
             // cbbLoaiPhong
             // 
             cbbLoaiPhong.FormattingEnabled = true;
+            cbbLoaiPhong.Items.AddRange(new object[] { "Phòng Đơn", "Phòng Đôi", "Phòng Gia Đình" });
             cbbLoaiPhong.Location = new System.Drawing.Point(23, 38);
             cbbLoaiPhong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cbbLoaiPhong.Name = "cbbLoaiPhong";
             cbbLoaiPhong.Size = new System.Drawing.Size(151, 25);
             cbbLoaiPhong.TabIndex = 2;
+            cbbLoaiPhong.SelectedIndexChanged += cbbLoaiPhong_SelectedIndexChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new System.Drawing.Point(14, 64);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(53, 17);
+            label4.Size = new System.Drawing.Size(0, 17);
             label4.TabIndex = 1;
-            label4.Text = "Phòng:";
             // 
             // label3
             // 
@@ -244,6 +251,10 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(txtQuoctich);
+            groupBox4.Controls.Add(label14);
+            groupBox4.Controls.Add(txtSdt);
+            groupBox4.Controls.Add(label13);
             groupBox4.Controls.Add(dtpNgaytra);
             groupBox4.Controls.Add(dtpNgayNhan);
             groupBox4.Controls.Add(txtGia);
@@ -266,10 +277,44 @@
             groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            groupBox4.Size = new System.Drawing.Size(390, 217);
+            groupBox4.Size = new System.Drawing.Size(390, 273);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
             groupBox4.Text = "Thông tin nhận phòng";
+            // 
+            // txtQuoctich
+            // 
+            txtQuoctich.Location = new System.Drawing.Point(211, 239);
+            txtQuoctich.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtQuoctich.Name = "txtQuoctich";
+            txtQuoctich.Size = new System.Drawing.Size(161, 24);
+            txtQuoctich.TabIndex = 21;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(212, 220);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(72, 17);
+            label14.TabIndex = 20;
+            label14.Text = "Quốc tịch:";
+            // 
+            // txtSdt
+            // 
+            txtSdt.Location = new System.Drawing.Point(22, 239);
+            txtSdt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtSdt.Name = "txtSdt";
+            txtSdt.Size = new System.Drawing.Size(150, 24);
+            txtSdt.TabIndex = 19;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(22, 220);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(92, 17);
+            label13.TabIndex = 18;
+            label13.Text = "Số điện thoại:";
             // 
             // dtpNgaytra
             // 
@@ -413,7 +458,7 @@
             groupBox5.Controls.Add(btnThemKhachHang);
             groupBox5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBox5.ForeColor = System.Drawing.Color.SteelBlue;
-            groupBox5.Location = new System.Drawing.Point(27, 396);
+            groupBox5.Location = new System.Drawing.Point(27, 451);
             groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -442,6 +487,7 @@
             btnHuy.TabIndex = 2;
             btnHuy.Text = "Hủy";
             btnHuy.UseVisualStyleBackColor = true;
+            btnHuy.Click += btnHuy_Click;
             // 
             // btnNhanPhong
             // 
@@ -469,7 +515,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(869, 494);
+            ClientSize = new System.Drawing.Size(869, 555);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -501,7 +547,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cbbPhong;
         private System.Windows.Forms.ComboBox cbbLoaiPhong;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -533,5 +578,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dtpNgaytra;
         private System.Windows.Forms.DateTimePicker dtpNgayNhan;
+        private System.Windows.Forms.TextBox txtSdt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtQuoctich;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnTimphongtrong;
     }
 }
