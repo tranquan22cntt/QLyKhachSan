@@ -319,6 +319,7 @@
             // dgvHoaDonTienPhong
             // 
             dgvHoaDonTienPhong.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dgvHoaDonTienPhong.BackgroundColor = System.Drawing.Color.White;
             dgvHoaDonTienPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHoaDonTienPhong.Location = new System.Drawing.Point(6, 24);
             dgvHoaDonTienPhong.Name = "dgvHoaDonTienPhong";
@@ -345,6 +346,7 @@
             // dgvChinhSachPhuThu
             // 
             dgvChinhSachPhuThu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dgvChinhSachPhuThu.BackgroundColor = System.Drawing.Color.White;
             dgvChinhSachPhuThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChinhSachPhuThu.Location = new System.Drawing.Point(6, 20);
             dgvChinhSachPhuThu.Name = "dgvChinhSachPhuThu";
@@ -369,6 +371,7 @@
             // dgvHoaDonDichVu
             // 
             dgvHoaDonDichVu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dgvHoaDonDichVu.BackgroundColor = System.Drawing.Color.White;
             dgvHoaDonDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHoaDonDichVu.Location = new System.Drawing.Point(6, 23);
             dgvHoaDonDichVu.Name = "dgvHoaDonDichVu";
