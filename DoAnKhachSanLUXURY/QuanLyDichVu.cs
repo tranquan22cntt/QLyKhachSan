@@ -115,7 +115,7 @@ namespace DoAnKhachSanLUXURY
             }
 
             // Thực hiện thêm dịch vụ vào cơ sở dữ liệu
-            bool result = themDv.ThemDichVu(maDichVu, tenDichVu, gia, loaiDichVu, soLuong);
+            bool result = themDv.ThemDichVu(maDichVu, tenDichVu,  loaiDichVu,gia, soLuong);
 
             if (result)
             {
