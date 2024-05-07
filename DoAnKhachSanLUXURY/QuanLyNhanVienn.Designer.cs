@@ -403,6 +403,7 @@
             Name = "frmQuanLyNhanVienn";
             Text = "QuanLyNhanVienn";
             WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            Load += frmQuanLyNhanVienn_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachNhanVien).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtDiaChi.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtSDT.Properties).EndInit();

@@ -22,5 +22,10 @@ namespace DoAnKhachSanLUXURY
         {
 
         }
+
+        private void frmQuanLyNhanVienn_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
