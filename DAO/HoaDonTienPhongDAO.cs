@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DangNhapDAO
+    public class HoaDonTienPhongDAO
     {
         private KetNoi ketNoi;
 
-        public DangNhapDAO() {
-
+        public HoaDonTienPhongDAO()
+        {
             ketNoi = new KetNoi();
         }
-
-        public DataTable DangNhap(string userName, string password)
+        public DataTable GetDSHoaDonTienPhong()
         {
-            string query = $"SELECT * FROM TAIKHOAN WHERE USERNAME = '{userName}' AND MATKHAU = '{password}'";
+            string query = $"SELECT * FROM HOADON";
             using (SqlConnection conn = ketNoi.Connect())
             {
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
@@ -28,9 +27,7 @@ namespace DAO
                     adapter.Fill(dataSet);
                     return dataSet.Tables[0];
                 }
-                conn.Close();
             }
-            
         }
     }
 }

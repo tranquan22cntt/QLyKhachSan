@@ -9,7 +9,7 @@ namespace DAO
 {
     public class KetNoi
     {
-        private const string ConnectionString = @"Data Source=DESKTOP-2Q175S6\SQLEXPRESS;Initial Catalog=DoAnKhachSan;Integrated Security=True";
+        private const string ConnectionString = @"Data Source=LAPTOP-GA9J10NA\SQLEXPRESS;Initial Catalog=DoAnKhachSan;Integrated Security=True";
 
         public SqlConnection Connect()
         {
@@ -23,6 +23,7 @@ namespace DAO
                 //MessageBox.Show("Không kết nối được CSDL: " + e.Message, "Thông báo",
                 //MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            conn.Close  ();
             return conn;
         }
     }
