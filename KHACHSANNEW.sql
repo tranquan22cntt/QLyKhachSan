@@ -3,6 +3,7 @@ GO
 CREATE TABLE DICHVU(
 	MADV CHAR(8) PRIMARY KEY,
 	SANPHAM NVARCHAR(50),
+	LOAIDV NVARCHAR (50),
 	GIATIEN MONEY,
 	SOLUONG INT
 )
@@ -82,7 +83,9 @@ CREATE TABLE KHACHHANG (
 	 QUOCTICH NVARCHAR(50),
 	 MAPHONG CHAR (8),
 	 MATN CHAR (8),
-	 MATT CHAR (8)
+	 MATT CHAR (8),
+	 NGAYDEN DATETIME, -- Thêm cột ngày đến
+	 NGAYNHANPHONG DATETIME, -- Thêm cột ngày nhận phòng
 	 FOREIGN KEY (MAPHONG) REFERENCES PHONG(MAPHONG),
      FOREIGN KEY (MATN) REFERENCES THUNGAN(MATN),
      FOREIGN KEY (MATT) REFERENCES TIEPTAN(MATT)
@@ -160,7 +163,7 @@ CREATE TABLE CHITIETHOADON(
 )
 go
 CREATE TABLE SUDUNG_DICHVU(
-	MADV CHAR(8) PRIMARY KEY,
+	MADV CHAR(8) ,
 	SANPHAM NVARCHAR(50),
 	SOLUONG INT,
 	THANHTIEN MONEY,
@@ -170,18 +173,17 @@ CREATE TABLE SUDUNG_DICHVU(
 )
 
 
-INSERT INTO DICHVU (MADV, SANPHAM, GIATIEN, SOLUONG)
-VALUES 
-('DV001', 'Bánh sandwich', 20000, 10),
-('DV002', 'Bánh kem', 50000, 15),
-('DV003', 'Bánh mì', 10000, 20),
-('DV004', 'Há cảo', 25000, 12),
-('DV005', 'Nước ngọt', 10000, 30),
-('DV006', 'Bàn chải đánh răng', 5000, 25),
-('DV007', 'Bao cao su', 10000, 8),
-('DV008', 'Bánh tráng', 15000, 18),
-('DV009', 'Trà đá', 12000, 22),
-('DV010', 'Cà phê', 25000, 10)
+INSERT INTO DICHVU (MADV, SANPHAM, LOAIDV, GIATIEN, SOLUONG) VALUES
+('DV001', 'Bánh sandwich', N'Đồ ăn', 20000, 10),
+('DV002', 'Bánh kem', N'Đồ ăn', 50000, 15),
+('DV003', 'Bánh mì', N'Đồ ăn', 10000, 20),
+('DV004', 'Há cảo', N'Đồ ăn', 25000, 12),
+('DV005', N'Nước ngọt', N'Đồ uống', 10000, 30),
+('DV006', N'Bàn chải đánh răng', N'Đồ sinh hoạt cá nhân', 5000, 25),
+('DV007', N'Bao cao su', N'Đồ sinh hoạt cá nhân', 10000, 8),
+('DV008', N'Bánh tráng', N'Đồ ăn', 15000, 18),
+('DV009', N'Trà đá', N'Đồ uống', 12000, 22),
+('DV010', N'Cà phê', N'Đồ uống', 25000, 10);
 
 -- Nhập dữ liệu cho bảng TAIKHOAN
 -- 10 tài khoản đầu tiên với LOAINV = 1
@@ -252,6 +254,23 @@ VALUES
 ('P009', 109, 'Phòng Gia Đình', 1200000, 4, 'Phòng gia đình có 2 giường đôi', 1),
 ('P010', 110, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1)
 
+
+INSERT INTO PHONG (MAPHONG, SOPHONG, LOAIPHONG, GIATIEN, SUCCHUA, MOTA, STA_TUS)
+VALUES 
+('P011', 111, 'Phòng Đơn', 500000, 1, 'Phòng đơn có 1 giường đơn', 1),
+('P012', 112, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1),
+('P013', 113, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1),
+('P014', 114, 'Phòng Gia Đình', 1200000, 4, 'Phòng gia đình có 2 giường đôi', 1),
+('P015', 115, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1),
+('P016', 116, 'Phòng Đơn', 500000, 1, 'Phòng đơn có 1 giường đơn', 1),
+('P017', 117, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1),
+('P018', 118, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1),
+('P019', 119, 'Phòng Gia Đình', 1200000, 4, 'Phòng gia đình có 2 giường đôi', 1),
+('P020', 120, 'Phòng Đôi', 800000, 2, 'Phòng đôi có 1 giường đôi', 1)
+
+UPDATE PHONG SET STA_TUS = 2 WHERE SOPHONG BETWEEN 101 AND 110
+
+--can them chu N vo de viet hoa
 INSERT INTO TIEPTAN (MATT, TENTT, SDT, CCCD, DIACHI, NGAYSINH, NGAYVAOLAM, GIOITINH, MUCLUONG, MAKH, MATK)
 VALUES 
 ('TT001', 'Nguyễn Văn A', 123456789, '123456789012', '12 Lê Lợi, Quận 1, TP.HCM', '1990-01-01', '2024-04-22', 1, 5000000, 'KH001', 'TK001'),
@@ -278,18 +297,19 @@ VALUES
 ('TN009', 'Phạm Văn I', 951753852, '951753852012', '134 Đề Thám, Quận 1, TP.HCM', '1998-09-09', '2024-04-22', 1, 9000000, 'KH009', 'TK019'),
 ('TN010', 'Phạm Thị J', 753951852, '753951852012', '145 Đồng Khởi, Quận 1, TP.HCM', '1999-10-10', '2024-04-22', 0, 9500000, 'KH010', 'TK020');
 
-INSERT INTO KHACHHANG (MAKH, TENKH, CCCD, SDT, NGAYSINH, GIOITINH, QUOCTICH, MAPHONG, MATN, MATT)
+INSERT INTO KHACHHANG (MAKH, TENKH, CCCD, SDT, NGAYSINH, GIOITINH, QUOCTICH, MAPHONG, MATN, MATT, NGAYDEN, NGAYNHANPHONG)
 VALUES 
-('KH001', 'Nguyễn Văn A', '123456789012', 123456789, '1990-01-01', 1, 'Việt Nam', 'P001', 'TN001', 'TT001'),
-('KH002', 'Nguyễn Thị B', '987654321012', 987654321, '1991-02-02', 0, 'Việt Nam', 'P002', 'TN002', 'TT002'),
-('KH003', 'Trần Văn C', '135792468012', 135792468, '1992-03-03', 1, 'Việt Nam', 'P003', 'TN003', 'TT003'),
-('KH004', 'Trần Thị D', '246813579012', 246813579, '1993-04-04', 0, 'Việt Nam', 'P004', 'TN004', 'TT004'),
-('KH005', 'Lê Văn E', '369258147012', 369258147, '1994-05-05', 1, 'Việt Nam', 'P005', 'TN005', 'TT005'),
-('KH006', 'Lê Thị F', '147258369012', 147258369, '1995-06-06', 0, 'Việt Nam', 'P006', 'TN006', 'TT006'),
-('KH007', 'Hoàng Văn G', '258369147012', 258369147, '1996-07-07', 1, 'Việt Nam', 'P007', 'TN007', 'TT007'),
-('KH008', 'Hoàng Thị H', '369147258012', 369147258, '1997-08-08', 0, 'Việt Nam', 'P008', 'TN008', 'TT008'),
-('KH009', 'Phạm Văn I', '951753852012', 951753852, '1998-09-09', 1, 'Việt Nam', 'P009', 'TN009', 'TT009'),
-('KH010', 'Phạm Thị J', '753951852012', 753951852, '1999-10-10', 0, 'Việt Nam', 'P010', 'TN010', 'TT010');
+('KH001', 'Nguyễn Văn A', '123456789012', 123456789, '1990-01-01', 1, 'Việt Nam', 'P001', 'TN001', 'TT001', '2024-04-23', '2024-04-25'),
+('KH002', 'Nguyễn Thị B', '987654321012', 987654321, '1991-02-02', 0, 'Việt Nam', 'P002', 'TN002', 'TT002', '2024-04-24', '2024-04-26'),
+('KH003', 'Trần Văn C', '135792468012', 135792468, '1992-03-03', 1, 'Việt Nam', 'P003', 'TN003', 'TT003', '2024-04-25', '2024-04-27'),
+('KH004', 'Trần Thị D', '246813579012', 246813579, '1993-04-04', 0, 'Việt Nam', 'P004', 'TN004', 'TT004', '2024-04-26', '2024-04-28'),
+('KH005', 'Lê Văn E', '369258147012', 369258147, '1994-05-05', 1, 'Việt Nam', 'P005', 'TN005', 'TT005', '2024-04-27', '2024-04-29'),
+('KH006', 'Lê Thị F', '147258369012', 147258369, '1995-06-06', 0, 'Việt Nam', 'P006', 'TN006', 'TT006', '2024-04-28', '2024-04-30'),
+('KH007', 'Hoàng Văn G', '258369147012', 258369147, '1996-07-07', 1, 'Việt Nam', 'P007', 'TN007', 'TT007', '2024-04-29', '2024-05-01'),
+('KH008', 'Hoàng Thị H', '369147258012', 369147258, '1997-08-08', 0, 'Việt Nam', 'P008', 'TN008', 'TT008', '2024-04-30', '2024-05-02'),
+('KH009', 'Phạm Văn I', '951753852012', 951753852, '1998-09-09', 1, 'Việt Nam', 'P009', 'TN009', 'TT009', '2024-05-01', '2024-05-03'),
+('KH010', 'Phạm Thị J', '753951852012', 753951852, '1999-10-10', 0, 'Việt Nam', 'P010', 'TN010', 'TT010', '2024-05-02', '2024-05-04')
+
 
 INSERT INTO LICHSUDONDEP (MATV, MAPHONG, NGAYDON)
 VALUES 
@@ -328,7 +348,7 @@ VALUES
 ('P007', 107, '258369147012', 258369147, 'KH007'),
 ('P008', 108, '369147258012', 369147258, 'KH008'),
 ('P009', 109, '951753852012', 951753852, 'KH009'),
-('P010', 110, '753951852012', 753951852, 'KH010');
+('P010', 110, '753951852012', 753951852, 'KH010')
 
 INSERT INTO TT_TRAPHONG (MAPHONG, SOPHONG, CCCD, SDT, MAKH, TENKH)
 VALUES 
@@ -371,15 +391,95 @@ VALUES
 
 INSERT INTO SUDUNG_DICHVU (MADV, SANPHAM, SOLUONG, THANHTIEN, MAKH)
 VALUES 
-('DV001', 'Bánh sandwich', 10, 200000, 'KH001'),
+
 ('DV002', 'Bánh kem', 5, 300000, 'KH002'),
 ('DV003', 'Bánh mì', 8, 200000, 'KH003'),
 ('DV004', 'Há cảo', 15, 450000, 'KH004'),
-('DV001', 'Bánh sandwich', 10, 200000, 'KH005'),
-('DV002', 'Bánh kem', 5, 300000, 'KH006'),
-('DV003', 'Bánh mì', 8, 200000, 'KH007'),
-('DV004', 'Há cảo', 15, 450000, 'KH008'),
-('DV001', 'Bánh sandwich', 10, 200000, 'KH009'),
-('DV002', 'Bánh kem', 5, 300000, 'KH010');
+('DV005', 'Bánh sandwich', 10, 200000, 'KH005'),
+('DV006', 'Bánh kem', 5, 300000, 'KH006'),
+('DV007', 'Bánh mì', 8, 200000, 'KH007'),
+('DV008', 'Há cảo', 15, 450000, 'KH008'),
+('DV009', 'Bánh sandwich', 10, 200000, 'KH009'),
+('DV010', 'Bánh kem', 5, 300000, 'KH010')
 
 
+
+
+CREATE PROCEDURE ThemKhachHangVaCapNhatPhong
+    @MAKH NVARCHAR(50),
+    @CCCD NVARCHAR(50),
+    @TENKH NVARCHAR(100),
+    @NGAYDEN DATE,
+    @NGAYNHANPHONG DATE,
+    @MAPHONG NVARCHAR(50),
+    @SOPHONG NVARCHAR(50),
+	@SDT int,
+	@QUOCTICH Nvarchar(50)
+AS
+BEGIN
+    BEGIN TRANSACTION
+
+    DECLARE @Error INT
+
+    -- Thêm khách hàng vào bảng KHACHHANG
+    INSERT INTO KHACHHANG (MAKH, CCCD, TENKH,SDT,MAPHONG, NGAYDEN, NGAYNHANPHONG,QUOCTICH)
+    VALUES (@MAKH, @CCCD, @TENKH,@SDT,@MAPHONG, @NGAYDEN, @NGAYNHANPHONG,@QUOCTICH)
+	INSERT INTO TT_NHANPHONG(MAPHONG, SOPHONG, CCCD,SDT,  MAKH)
+	VALUES (@MAPHONG,@SOPHONG,@CCCD,@SDT,@MAKH)
+    SET @Error = @@ERROR
+
+    -- Cập nhật trạng thái phòng
+    UPDATE PHONG
+    SET STA_TUS = 3
+    WHERE MAPHONG = @MAPHONG 
+
+    SET @Error = @Error + @@ERROR
+
+    IF @Error = 0
+    BEGIN
+        COMMIT TRANSACTION
+    END
+    ELSE
+    BEGIN
+        ROLLBACK TRANSACTION
+    END
+END
+
+--drop proc ThemKhachHangVaCapNhatPhong
+
+
+--EXEC ThemKhachHangVaCapNhatPhong 'KH014', 1231, N'ÂSFAF', '2024-04-23', '2024-04-23','P015' , 115
+
+
+CREATE PROCEDURE UpdateRoomTypes
+AS
+BEGIN
+    -- Cập nhật loại phòng thành "Phòng Đơn" cho các phòng có loại phòng là "Phòng Đơn"
+    UPDATE PHONG
+    SET LOAIPHONG = N'Phòng Đơn'
+    WHERE LOAIPHONG = 'Phòng Đơn';
+
+    -- Cập nhật loại phòng thành "Phòng Đôi" cho các phòng có loại phòng là "Phòng Đôi"
+    UPDATE PHONG
+    SET LOAIPHONG = N'Phòng Đôi'
+    WHERE LOAIPHONG = 'Phòng Đôi';
+
+    -- Cập nhật loại phòng thành "Phòng Gia Đình" cho các phòng có loại phòng là "Phòng Gia Đình"
+    UPDATE PHONG
+    SET LOAIPHONG = N'Phòng Gia Đình'
+    WHERE LOAIPHONG = 'Phòng Gia Đình';
+END
+GO
+
+--exec UpdateRoomTypes
+--select * from DICHVU
+
+
+ALTER TABLE SUDUNG_DICHVU
+ADD CONSTRAINT FK_SUDUNG_DICHVU_MADV
+FOREIGN KEY (MADV)
+REFERENCES DICHVU(MADV)
+ON DELETE CASCADE
+
+--commmentttsdfsfsfsfd
+--delete DICHVU where MADV = 'DV006'
