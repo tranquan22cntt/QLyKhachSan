@@ -22,13 +22,11 @@ namespace BLL
         {
             DanhSachChinhSachPhuThu = new List<ChinhSachPhuThu>();
 
-            // Khởi tạo dữ liệu mẫu
-            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P001", MoTa = "Phụ thu phòng đẹp", PhanTramPhuThu = 10.0 });
-            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P002", MoTa = "Phụ thu dịch vụ cao cấp", PhanTramPhuThu = 15.0 });
-            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P003", MoTa = "Phụ thu sử dụng hồ bơi", PhanTramPhuThu = 5.0 });
-            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P004", MoTa = "Phụ thu sử dụng phòng gym", PhanTramPhuThu = 3.0 });
-            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P005", MoTa = "Phụ thu sử dụng spa", PhanTramPhuThu = 7.5 });
-            // Thêm 3 chính sách phụ thu khác
+            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P001", MoTa = "Phu thu phong dep", PhanTramPhuThu = 10.0 });
+            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P002", MoTa = "Phu thu dich vu cao cap", PhanTramPhuThu = 15.0 });
+            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P003", MoTa = "Phu thu su dung ho boi", PhanTramPhuThu = 5.0 });
+            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P004", MoTa = "Phu thu su dung phong gym", PhanTramPhuThu = 3.0 });
+            DanhSachChinhSachPhuThu.Add(new ChinhSachPhuThu() { MaPhuThu = "P005", MoTa = "Phu thu su dung spa", PhanTramPhuThu = 7.5 });
         }
 
         public List<ChinhSachPhuThu> GetDanhSachChinhSachPhuThu()
