@@ -52,6 +52,7 @@
             accordionControlSeparator4 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             accordionControlSeparator5 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
+            accordionControlSeparator6 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -63,6 +64,7 @@
             btnNhan = new System.Windows.Forms.Button();
             btnQLDichVu = new System.Windows.Forms.Button();
             label7 = new System.Windows.Forms.Label();
+            accordionControlSeparator7 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)accordionControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fluentDesignFormControl1).BeginInit();
@@ -203,7 +205,7 @@
             // accordionControl1
             // 
             accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { aThô, accordionControlElement4, accordionControlElement5 });
+            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { aThô, accordionControlSeparator7, accordionControlSeparator6, accordionControlElement4, accordionControlElement5 });
             accordionControl1.Location = new System.Drawing.Point(0, 39);
             accordionControl1.Name = "accordionControl1";
             accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
@@ -220,6 +222,7 @@
             aThô.Name = "aThô";
             aThô.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             aThô.Text = "Thông tin cá nhân";
+            aThô.Click += aThô_Click;
             // 
             // accordionControlElement1
             // 
@@ -269,6 +272,10 @@
             // 
             accordionControlSeparator5.Name = "accordionControlSeparator5";
             accordionControlSeparator5.Visible = false;
+            // 
+            // accordionControlSeparator6
+            // 
+            accordionControlSeparator6.Name = "accordionControlSeparator6";
             // 
             // accordionControlElement4
             // 
@@ -396,6 +403,10 @@
             label7.TabIndex = 4;
             label7.Text = "Quản Lý Khách Sạn";
             // 
+            // accordionControlSeparator7
+            // 
+            accordionControlSeparator7.Name = "accordionControlSeparator7";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -454,6 +465,8 @@
         private System.Windows.Forms.Button btnQLNhanVien;
         private System.Windows.Forms.Button btnNhan;
         private System.Windows.Forms.Button btnQLDichVu;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator6;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator7;
     }
 }
 
