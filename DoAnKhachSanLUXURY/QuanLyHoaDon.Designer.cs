@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new System.Windows.Forms.GroupBox();
+            label8 = new System.Windows.Forms.Label();
+            txtMaDV = new System.Windows.Forms.TextBox();
             btnGiamSL = new System.Windows.Forms.Button();
             btnTangSL = new System.Windows.Forms.Button();
             txtSoLuong = new System.Windows.Forms.TextBox();
@@ -44,7 +46,7 @@
             groupBox2 = new System.Windows.Forms.GroupBox();
             btnTangGia = new System.Windows.Forms.Button();
             btnGiamGia = new System.Windows.Forms.Button();
-            textBox1 = new System.Windows.Forms.TextBox();
+            txtGiamGia = new System.Windows.Forms.TextBox();
             btnDong = new System.Windows.Forms.Button();
             btnThanhToan = new System.Windows.Forms.Button();
             label7 = new System.Windows.Forms.Label();
@@ -56,8 +58,6 @@
             dgvChinhSachPhuThu = new System.Windows.Forms.DataGridView();
             groupBox5 = new System.Windows.Forms.GroupBox();
             dgvHoaDonDichVu = new System.Windows.Forms.DataGridView();
-            txtMaDV = new System.Windows.Forms.TextBox();
-            label8 = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -91,6 +91,22 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách dịch vụ";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(19, 36);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(95, 21);
+            label8.TabIndex = 14;
+            label8.Text = "Mã dịch vụ:";
+            // 
+            // txtMaDV
+            // 
+            txtMaDV.Location = new System.Drawing.Point(24, 60);
+            txtMaDV.Name = "txtMaDV";
+            txtMaDV.Size = new System.Drawing.Size(321, 28);
+            txtMaDV.TabIndex = 13;
             // 
             // btnGiamSL
             // 
@@ -203,7 +219,7 @@
             // 
             groupBox2.Controls.Add(btnTangGia);
             groupBox2.Controls.Add(btnGiamGia);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(txtGiamGia);
             groupBox2.Controls.Add(btnDong);
             groupBox2.Controls.Add(btnThanhToan);
             groupBox2.Controls.Add(label7);
@@ -236,12 +252,12 @@
             btnGiamGia.TabIndex = 15;
             btnGiamGia.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtGiamGia
             // 
-            textBox1.Location = new System.Drawing.Point(22, 109);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(321, 28);
-            textBox1.TabIndex = 14;
+            txtGiamGia.Location = new System.Drawing.Point(22, 109);
+            txtGiamGia.Name = "txtGiamGia";
+            txtGiamGia.Size = new System.Drawing.Size(321, 28);
+            txtGiamGia.TabIndex = 14;
             // 
             // btnDong
             // 
@@ -260,6 +276,7 @@
             btnThanhToan.TabIndex = 12;
             btnThanhToan.Text = "Thanh toán";
             btnThanhToan.UseVisualStyleBackColor = true;
+            btnThanhToan.Click += btnThanhToan_Click;
             // 
             // label7
             // 
@@ -308,6 +325,9 @@
             dgvHoaDonTienPhong.RowHeadersWidth = 51;
             dgvHoaDonTienPhong.Size = new System.Drawing.Size(492, 144);
             dgvHoaDonTienPhong.TabIndex = 0;
+            dgvHoaDonTienPhong.CellClick += dgvHoaDonTienPhong_CellContentClick;
+            dgvHoaDonTienPhong.CellContentClick += dgvHoaDonTienPhong_CellContentClick;
+            dgvHoaDonTienPhong.Click += btnThanhToan_Click;
             // 
             // groupBox4
             // 
@@ -355,23 +375,9 @@
             dgvHoaDonDichVu.RowHeadersWidth = 51;
             dgvHoaDonDichVu.Size = new System.Drawing.Size(492, 233);
             dgvHoaDonDichVu.TabIndex = 0;
+            dgvHoaDonDichVu.CellClick += dgvHoaDonDichVu_CellContentClick;
             dgvHoaDonDichVu.CellContentClick += dgvHoaDonDichVu_CellContentClick;
-            // 
-            // txtMaDV
-            // 
-            txtMaDV.Location = new System.Drawing.Point(24, 60);
-            txtMaDV.Name = "txtMaDV";
-            txtMaDV.Size = new System.Drawing.Size(321, 28);
-            txtMaDV.TabIndex = 13;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(19, 36);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(95, 21);
-            label8.TabIndex = 14;
-            label8.Text = "Mã dịch vụ:";
+            dgvHoaDonDichVu.Click += btnThanhToan_Click;
             // 
             // frmQuanLyHoaDon
             // 
@@ -428,7 +434,7 @@
         private System.Windows.Forms.Button btnGiamSL;
         private System.Windows.Forms.Button btnTangSL;
         private System.Windows.Forms.TextBox txtSoLuong;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGiamGia;
         private System.Windows.Forms.Button btnTangGia;
         private System.Windows.Forms.Button btnGiamGia;
         private System.Windows.Forms.Label label8;
