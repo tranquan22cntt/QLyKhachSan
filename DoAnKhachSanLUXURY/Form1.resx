@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="fluentFormDefaultManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnQLDichVu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAJ
-        1AAACdQBHNc22gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAh4SURBVHhe5Vpt
+        0AAACdAB4yqxyAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAh4SURBVHhe5Vpt
         UFTXGbbTzvRHO51pO21/tJ386o9+TzvTwi67dLl3WViJGiPECQoGg7B7z95lWb5X+QwSIRUTyMTWqFFR
         giixJAr5aGJ1qiZFraNJgwhCQIyUkE6nadIssG/Pe/ZcXJYL2QUz2bu8M8/MvWfPec/7PPc9H/fcXREJ
         pk+Q6nWCBItBnEAm9SLRcVfaNJ1A2jcmS9CaKsGx3NKw4BfCnsZdadNQgLwUAv0ZBG6VVTHcLt8OYzX1
@@ -161,7 +164,4 @@
         IPEM7uTt2wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="fluentFormDefaultManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>
