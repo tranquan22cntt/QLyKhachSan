@@ -82,6 +82,22 @@ namespace BLL
             return dao.TimKiemTiepTan(tukhoa);
         }
 
+        public bool CapNhatNhanVienTapVu(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
+        {
+            return dao.CapNhatNhanVienTapVu(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+        }
+
+        public bool CapNhatNhanVienThuNgan(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
+        {
+            return dao.CapNhatNhanVienThuNgan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+        }
+
+        public bool CapNhatNhanVienTiepTan(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
+        {
+            return dao.CapNhatNhanVienTiepTan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+        }
+
+
 
     }
 }

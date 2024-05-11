@@ -224,5 +224,51 @@
             }
         }
 
+        public bool CapNhatNhanVienTapVu(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
+        {
+            string query = $"UPDATE TapVu SET Tentv = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE MaNV = '{maNV}'";
+
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0;
+            }
+        }
+
+        public bool CapNhatNhanVienThuNgan(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
+        {
+            string query = $"UPDATE ThuNgan SET Tentn = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE MaNV = '{maNV}'";
+
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0;
+            }
+        }
+
+        public bool CapNhatNhanVienTiepTan(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
+        {
+            string query = $"UPDATE TiepTan SET Tentt = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE MaNV = '{maNV}'";
+
+            using (SqlConnection conn = ketNoi.Connect())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0;
+            }
+        }
+
+
     }
-    }
+}

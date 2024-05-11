@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -201,6 +202,42 @@ namespace DoAnKhachSanLUXURY
             else
             {
                 MessageBox.Show("Không tìm thấy thông tin cho từ khóa đã nhập.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCapNhatNhanVien_Click(object sender, EventArgs e)
+        {
+            string maNV = txtmanv.Text.Trim();
+            string tenNV = txtTen.Text.Trim();
+            string sdt = txtsdt.Text;
+            string cccd = txtCCCD.Text.Trim();
+            string diaChi = txtdiachi.Text.Trim();
+            DateTime ngaySinh = dtpNgaySinh.Value;
+            DateTime ngayVaoLam = dtpNgayVaoLam.Value;
+            string gioiTinh = cbGioiTinh.Text;
+            //string loaiNV = txtloainhanvien.Text.Trim();      
+
+
+            QuanLyNVBLL quanLyNVBLL = new QuanLyNVBLL();
+            string thongbao;
+            bool check = false;
+            switch (txtloainhanvien.Text)
+            {
+                case "Tạp vụ":
+                    check  = quanLyNVBLL.CapNhatNhanVienTapVu(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    thongbao = check ? "Cập nhật nhân viên tạp vụ thành công." : "Cập nhật nhân viên tạp vụ không thành công.";
+                    break;
+                case "Thu ngân":
+                    check = quanLyNVBLL.CapNhatNhanVienThuNgan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    thongbao = check ? "Cập nhật nhân viên thu ngân thành công." : "Cập nhật nhân viên thu ngân không thành công.";
+                    break;
+                case "Tiếp tân":
+                    check = quanLyNVBLL.CapNhatNhanVienTiepTan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    thongbao = check ? "Cập nhật nhân viên tiếp tân thành công." : "Cập nhật nhân viên tiếp tân không thành công.";
+                    break;
+                default:
+                    MessageBox.Show("Loại nhân viên không hợp lệ.");
+                    break;
             }
         }
     }
