@@ -38,14 +38,14 @@ namespace DoAnKhachSanLUXURY
         {
             string manv = txtmanv.Text;
             string ten = txtTen.Text;
-            int sdt = int.Parse(txtsdt.Text);
+            string sdt = txtsdt.Text;
             string cccd = txtCCCD.Text;
             string diachi = txtdiachi.Text;
             DateTime ngaysinh = dtpNgaySinh.Value;
             DateTime ngayvaolam = dtpNgayVaoLam.Value;
             string gioitinh = cbGioiTinh.Text;
 
-            if (string.IsNullOrEmpty(manv) || string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(cccd) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(gioitinh))
+            if (string.IsNullOrEmpty(sdt) || string.IsNullOrEmpty(manv) || string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(cccd) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(gioitinh))
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

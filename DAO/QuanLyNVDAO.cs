@@ -51,7 +51,7 @@
 
 
         // them nhan vien
-        public void Addtv(string matv, string ten, int sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
+        public void Addtv(string matv, string ten, string sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
         {
             string query = $"INSERT INTO tapvu (matv, tentv, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh) VALUES ('{matv}','{ten}', '{sdt}', '{cccd}', '{diachi}', '{ngaysinh}', '{ngayvaolam}', '{gioitinh}')";
             using (SqlConnection conn = ketNoi.Connect())
@@ -63,7 +63,7 @@
             }
         }
 
-        public void Addtn(string matn, string ten, int sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
+        public void Addtn(string matn, string ten, string sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
         {
             string query = $"INSERT INTO thungan (matn, tentn, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh) VALUES ('{matn}','{ten}', '{sdt}', '{cccd}', '{diachi}', '{ngaysinh}', '{ngayvaolam}', '{gioitinh}')";
             using (SqlConnection conn = ketNoi.Connect())
@@ -74,7 +74,7 @@
                 conn.Close();
             }
         }
-        public void Addtt(string matt, string ten, int sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
+        public void Addtt(string matt, string ten, string sdt, string cccd, string diachi, DateTime ngaysinh, DateTime ngayvaolam, string gioitinh)
         {
             string query = $"INSERT INTO tieptan (matt, tentt, sdt, cccd, diachi, ngaysinh, ngayvaolam, gioitinh) VALUES ('{matt}', '{ten}', '{sdt}', '{cccd}', '{diachi}', '{ngaysinh}', '{ngayvaolam}', '{gioitinh}')";
             using (SqlConnection conn = ketNoi.Connect())
