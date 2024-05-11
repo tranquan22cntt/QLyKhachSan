@@ -23,7 +23,7 @@ namespace DAO
             {
                 try
                 {
-                    string query = "UPDATE HOADON SET TINHTRANGTT = 1 WHERE MAHD = @MaHD";
+                    string query = "UPDATE HOADON SET TINHTRANGTT = 0 WHERE MAHD = @MaHD";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@MaHD", maHD);
                     cmd.ExecuteNonQuery();
@@ -36,7 +36,7 @@ namespace DAO
             }
         }
 
-        public bool ThanhToanHoaDonDichVu(string maDV)
+        /*public bool ThanhToanHoaDonDichVu(string maDV)
         {
             using (SqlConnection conn = ketNoi.Connect())
             {
@@ -52,7 +52,7 @@ namespace DAO
                 {
                     return false;
                 }
-            }
-        }
+            }*/
     }
 }
+
