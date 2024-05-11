@@ -44,6 +44,7 @@
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            btnXuatFile = new System.Windows.Forms.Button();
             btnTangGia = new System.Windows.Forms.Button();
             btnGiamGia = new System.Windows.Forms.Button();
             txtGiamGia = new System.Windows.Forms.TextBox();
@@ -217,6 +218,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnXuatFile);
             groupBox2.Controls.Add(btnTangGia);
             groupBox2.Controls.Add(btnGiamGia);
             groupBox2.Controls.Add(txtGiamGia);
@@ -233,6 +235,16 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
+            // 
+            // btnXuatFile
+            // 
+            btnXuatFile.Location = new System.Drawing.Point(138, 155);
+            btnXuatFile.Name = "btnXuatFile";
+            btnXuatFile.Size = new System.Drawing.Size(105, 32);
+            btnXuatFile.TabIndex = 17;
+            btnXuatFile.Text = "Xuất";
+            btnXuatFile.UseVisualStyleBackColor = true;
+            btnXuatFile.Click += btnXuatFile_Click;
             // 
             // btnTangGia
             // 
@@ -261,18 +273,19 @@
             // 
             // btnDong
             // 
-            btnDong.Location = new System.Drawing.Point(94, 193);
+            btnDong.Location = new System.Drawing.Point(251, 155);
             btnDong.Name = "btnDong";
-            btnDong.Size = new System.Drawing.Size(191, 29);
+            btnDong.Size = new System.Drawing.Size(92, 32);
             btnDong.TabIndex = 13;
             btnDong.Text = "Đóng";
             btnDong.UseVisualStyleBackColor = true;
+            btnDong.Click += btnDong_Click;
             // 
             // btnThanhToan
             // 
-            btnThanhToan.Location = new System.Drawing.Point(94, 155);
+            btnThanhToan.Location = new System.Drawing.Point(22, 155);
             btnThanhToan.Name = "btnThanhToan";
-            btnThanhToan.Size = new System.Drawing.Size(191, 32);
+            btnThanhToan.Size = new System.Drawing.Size(105, 32);
             btnThanhToan.TabIndex = 12;
             btnThanhToan.Text = "Thanh toán";
             btnThanhToan.UseVisualStyleBackColor = true;
@@ -326,7 +339,6 @@
             dgvHoaDonTienPhong.RowHeadersWidth = 51;
             dgvHoaDonTienPhong.Size = new System.Drawing.Size(492, 144);
             dgvHoaDonTienPhong.TabIndex = 0;
-            dgvHoaDonTienPhong.CellClick += dgvHoaDonTienPhong_CellContentClick;
             dgvHoaDonTienPhong.CellContentClick += dgvHoaDonTienPhong_CellContentClick;
             dgvHoaDonTienPhong.Click += btnThanhToan_Click;
             // 
@@ -378,8 +390,6 @@
             dgvHoaDonDichVu.RowHeadersWidth = 51;
             dgvHoaDonDichVu.Size = new System.Drawing.Size(492, 233);
             dgvHoaDonDichVu.TabIndex = 0;
-            dgvHoaDonDichVu.CellClick += dgvHoaDonDichVu_CellContentClick;
-            dgvHoaDonDichVu.CellContentClick += dgvHoaDonDichVu_CellContentClick;
             dgvHoaDonDichVu.Click += btnThanhToan_Click;
             // 
             // frmQuanLyHoaDon
@@ -442,5 +452,6 @@
         private System.Windows.Forms.Button btnGiamGia;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtMaDV;
+        private System.Windows.Forms.Button btnXuatFile;
     }
 }
