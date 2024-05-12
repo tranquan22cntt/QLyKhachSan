@@ -19,40 +19,45 @@ namespace DAO
 
         public bool ThanhToanHoaDonTienPhong(string maHD)
         {
-            using (SqlConnection conn = ketNoi.Connect())
+            try
             {
-                try
+                // Chuỗi truy vấn SQL
+                string query = "UPDATE HOADON SET TINHTRANGTT = 0 WHERE MAHD = @MaHD";
+
+                // Mở kết nối và thực hiện truy vấn
+                using (SqlConnection connection = ketNoi.Connect())
                 {
-                    string query = "UPDATE HOADON SET TINHTRANGTT = 0 WHERE MAHD = @MaHD";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@MaHD", maHD);
-                    cmd.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Thêm tham số cho truy vấn
+                        command.Parameters.AddWithValue("@MaHD", maHD);
+
+                        // Mở kết nối
+                        connection.Open();
+
+                        // Thực hiện truy vấn cập nhật
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Kiểm tra xem có bản ghi nào được cập nhật không
+                        if (rowsAffected > 0)
+                        {
+                            // Nếu có, trả về true để thông báo thanh toán thành công
+                            return true;
+                        }
+                        else
+                        {
+                            // Nếu không, trả về false để thông báo lỗi không thanh toán được
+                            return false;
+                        }
+                    }
                 }
             }
-        }
-
-        /*public bool ThanhToanHoaDonDichVu(string maDV)
-        {
-            using (SqlConnection conn = ketNoi.Connect())
+            catch (Exception ex)
             {
-                try
-                {
-                    string query = "UPDATE DICHVU SET TINHTRANGTT = 1 WHERE MADV = @MaDV";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@MaDV", maDV);
-                    cmd.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            }*/
+                // Xử lý nếu có lỗi
+                throw ex;
+            }
+        }
     }
 }
 

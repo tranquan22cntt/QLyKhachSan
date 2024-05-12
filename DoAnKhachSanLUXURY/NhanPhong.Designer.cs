@@ -477,6 +477,7 @@
             btnDong.TabIndex = 3;
             btnDong.Text = "Đóng";
             btnDong.UseVisualStyleBackColor = true;
+            btnDong.Click += btnDong_Click;
             // 
             // btnHuy
             // 

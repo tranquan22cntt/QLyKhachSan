@@ -110,6 +110,7 @@
             txtMatKhau.Location = new System.Drawing.Point(16, 105);
             txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtMatKhau.Name = "txtMatKhau";
+            txtMatKhau.PasswordChar = '*';
             txtMatKhau.Size = new System.Drawing.Size(300, 21);
             txtMatKhau.TabIndex = 3;
             // 

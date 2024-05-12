@@ -122,15 +122,16 @@ namespace DoAnKhachSanLUXURY
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvHoaDonTienPhong.Rows[e.RowIndex];
-                string TONGTHANHTOAN = row.Cells["TONGTHANHTOAN"].Value.ToString();
+                MAHD = row.Cells["MAHD"].Value?.ToString() ?? "";
+                string TONGTHANHTOAN = row.Cells["TONGTHANHTOAN"].Value?.ToString();
                 txtTongTien.Text = TONGTHANHTOAN;
-                MAHD = row.Cells["MAHD"].Value.ToString();
             }
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             Thanhtoan.ThanhToanHoaDonTienPhong(MAHD);
+            HoaDonTienPhong();
             if (string.IsNullOrEmpty(txtTongTien.Text))
             {
                 //MessageBox.Show("Vui lòng chọn một hóa đơn để thanh toán.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -157,15 +158,7 @@ namespace DoAnKhachSanLUXURY
         /*private DataGridViewRow selectedDichVuRow;*/
         //hihi
         
-        /*private void dgvHoaDonDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvHoaDonDichVu.Rows[e.RowIndex];
-                string TONGTHANHTOAN = row.Cells["GIATIEN"].Value.ToString();
-                txtTongTien.Text = TONGTHANHTOAN;
-            }
-        }*/
+      
 
         private void btnDong_Click(object sender, EventArgs e)
         {
