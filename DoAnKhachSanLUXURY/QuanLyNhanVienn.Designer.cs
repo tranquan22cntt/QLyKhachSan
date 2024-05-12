@@ -242,6 +242,7 @@
             btnCapNhatNhanVien.TabIndex = 0;
             btnCapNhatNhanVien.Text = "Cập nhật nhân viên";
             btnCapNhatNhanVien.UseVisualStyleBackColor = true;
+            btnCapNhatNhanVien.Click += btnCapNhatNhanVien_Click;
             // 
             // dtpNgayVaoLam
             // 
