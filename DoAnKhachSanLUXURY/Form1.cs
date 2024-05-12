@@ -58,5 +58,10 @@ namespace DoAnKhachSanLUXURY
             frmQuanLyDichVu frm = new frmQuanLyDichVu();
             frm.Show();
         }
+
+        private void aThô_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
