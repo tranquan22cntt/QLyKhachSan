@@ -226,7 +226,7 @@
 
         public bool CapNhatNhanVienTapVu(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
         {
-            string query = $"UPDATE TapVu SET Tentv = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE MaNV = '{maNV}'";
+            string query = $"UPDATE TapVu SET Tentv = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE Matv = '{maNV}'";
 
             using (SqlConnection conn = ketNoi.Connect())
             {
@@ -241,7 +241,7 @@
 
         public bool CapNhatNhanVienThuNgan(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
         {
-            string query = $"UPDATE ThuNgan SET Tentn = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE MaNV = '{maNV}'";
+            string query = $"UPDATE ThuNgan SET Tentn = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE Matn = '{maNV}'";
 
             using (SqlConnection conn = ketNoi.Connect())
             {
@@ -256,7 +256,7 @@
 
         public bool CapNhatNhanVienTiepTan(string maNV, string tenNV, string sdt, string cccd, string diaChi, DateTime ngaySinh, DateTime ngayVaoLam, string gioiTinh)
         {
-            string query = $"UPDATE TiepTan SET Tentt = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE MaNV = '{maNV}'";
+            string query = $"UPDATE TiepTan SET Tentt = '{tenNV}', SDT = {sdt}, CCCD = '{cccd}', DiaChi = '{diaChi}', NgaySinh = '{ngaySinh}', NgayVaoLam = '{ngayVaoLam}', GioiTinh = '{gioiTinh}' WHERE Matt = '{maNV}'";
 
             using (SqlConnection conn = ketNoi.Connect())
             {

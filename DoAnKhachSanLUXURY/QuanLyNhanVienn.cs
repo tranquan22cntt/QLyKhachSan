@@ -207,38 +207,44 @@ namespace DoAnKhachSanLUXURY
 
         private void btnCapNhatNhanVien_Click(object sender, EventArgs e)
         {
-            string maNV = txtmanv.Text.Trim();
-            string tenNV = txtTen.Text.Trim();
+            string maNV = txtmanv.Text;
+            string tenNV = txtTen.Text;
             string sdt = txtsdt.Text;
-            string cccd = txtCCCD.Text.Trim();
-            string diaChi = txtdiachi.Text.Trim();
+            string cccd = txtCCCD.Text;
+            string diaChi = txtdiachi.Text;
             DateTime ngaySinh = dtpNgaySinh.Value;
             DateTime ngayVaoLam = dtpNgayVaoLam.Value;
-            string gioiTinh = cbGioiTinh.Text;
-            //string loaiNV = txtloainhanvien.Text.Trim();      
+            string gioiTinh = cbGioiTinh.Text;     
 
 
             QuanLyNVBLL quanLyNVBLL = new QuanLyNVBLL();
-            string thongbao;
+            string tb;
             bool check = false;
             switch (txtloainhanvien.Text)
             {
                 case "Tạp vụ":
                     check  = quanLyNVBLL.CapNhatNhanVienTapVu(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
-                    thongbao = check ? "Cập nhật nhân viên tạp vụ thành công." : "Cập nhật nhân viên tạp vụ không thành công.";
+                    tb = check ? "Cập nhật nhân viên tạp vụ thành công." : "Cập nhật nhân viên tạp vụ không thành công.";
+                    MessageBox.Show(tb);
+                    dgvDanhSachNhanVien.DataSource = bll.LoadTapVuData();
                     break;
                 case "Thu ngân":
                     check = quanLyNVBLL.CapNhatNhanVienThuNgan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
-                    thongbao = check ? "Cập nhật nhân viên thu ngân thành công." : "Cập nhật nhân viên thu ngân không thành công.";
+                    tb = check ? "Cập nhật nhân viên thu ngân thành công." : "Cập nhật nhân viên thu ngân không thành công.";
+                    MessageBox.Show(tb);
+                    dgvDanhSachNhanVien.DataSource = bll.LoadThuNganData();
                     break;
                 case "Tiếp tân":
                     check = quanLyNVBLL.CapNhatNhanVienTiepTan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
-                    thongbao = check ? "Cập nhật nhân viên tiếp tân thành công." : "Cập nhật nhân viên tiếp tân không thành công.";
+                    tb = check ? "Cập nhật nhân viên tiếp tân thành công." : "Cập nhật nhân viên tiếp tân không thành công.";
+                    dgvDanhSachNhanVien.DataSource = bll.LoadTiepTanData();
+                    MessageBox.Show(tb);
                     break;
                 default:
                     MessageBox.Show("Loại nhân viên không hợp lệ.");
                     break;
             }
+            ClearAll();
         }
     }
 }
