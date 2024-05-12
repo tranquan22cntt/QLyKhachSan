@@ -15,15 +15,21 @@ namespace DoAnKhachSanLUXURY
 {
     public partial class frmQuanLyHoaDon : DevExpress.XtraEditors.XtraForm
     {
+        public string MAHD="";
         private int quantity = 0;
         LoadDVBLL themDichVuBLL;
         HoaDonTienPhongBLL HoaDonTienPhongBLL;
-        ThanhToanBLL ThanhToanBLL;
+        ThanhToanBLL Thanhtoan;
+
+        private readonly HoaDonTienPhongDAO _HoaDonTienPhongDAO = new HoaDonTienPhongDAO();
+        private readonly LoadDVDAO _LoadDVDAO = new LoadDVDAO();
+
         public frmQuanLyHoaDon()
         {
             InitializeComponent();
             themDichVuBLL = new LoadDVBLL();
             HoaDonTienPhongBLL = new HoaDonTienPhongBLL();
+            Thanhtoan = new ThanhToanBLL();
         }
 
         private void btnTang_Click(object sender, EventArgs e)
@@ -67,6 +73,14 @@ namespace DoAnKhachSanLUXURY
             {
                 dgvChinhSachPhuThu.Rows.Add(chinhSachPhuThu.MaPhuThu, chinhSachPhuThu.MoTa, chinhSachPhuThu.PhanTramPhuThu);
             }
+
+            if (dgvHoaDonTienPhong.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvHoaDonTienPhong.SelectedRows[0];
+                MAHD = row.Cells["MAHD"].Value.ToString();
+                string TONGTHANHTOAN = row.Cells["TONGTHANHTOAN"].Value.ToString();
+                txtTongTien.Text = TONGTHANHTOAN;
+            }
         }
 
         private void LoadDV()
@@ -103,20 +117,27 @@ namespace DoAnKhachSanLUXURY
         {
 
         }
+        private void dgvHoaDonTienPhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvHoaDonTienPhong.Rows[e.RowIndex];
+                string TONGTHANHTOAN = row.Cells["TONGTHANHTOAN"].Value.ToString();
+                txtTongTien.Text = TONGTHANHTOAN;
+                MAHD = row.Cells["MAHD"].Value.ToString();
+            }
+        }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTongTien.Text))
+            Thanhtoan.ThanhToanHoaDonTienPhong(MAHD);
+            if (string.IsNullOrEmpty(txtTongTien.Text))
             {
-                MessageBox.Show("Vui lòng chọn một hóa đơn để thanh toán.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("Vui lòng chọn một hóa đơn để thanh toán.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtGiamGia.Text))
-            {
-                MessageBox.Show("Vui lòng nhập giảm giá.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+          
 
             if (!decimal.TryParse(txtGiamGia.Text, out decimal giamGia) || giamGia < 0 || giamGia >= Convert.ToDecimal(txtTongTien.Text))
             {
@@ -133,26 +154,34 @@ namespace DoAnKhachSanLUXURY
         }
 
         private DataGridViewRow selectedTienPhongRow;
-        private DataGridViewRow selectedDichVuRow;
+        /*private DataGridViewRow selectedDichVuRow;*/
         //hihi
-        private void dgvHoaDonTienPhong_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvHoaDonTienPhong.Rows[e.RowIndex];
-                string TONGTHANHTOAN = row.Cells["TONGTHANHTOAN"].Value.ToString();
-                txtTongTien.Text = TONGTHANHTOAN;
-
-            }
-        }
-
-        private void dgvHoaDonDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+        /*private void dgvHoaDonDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvHoaDonDichVu.Rows[e.RowIndex];
                 string TONGTHANHTOAN = row.Cells["GIATIEN"].Value.ToString();
                 txtTongTien.Text = TONGTHANHTOAN;
+            }
+        }*/
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnXuatFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.ShowDialog();
+
+            if (!string.IsNullOrEmpty(saveFileDialog.FileName))
+            {
+                _HoaDonTienPhongDAO.Export(saveFileDialog.FileName);
+
+                _LoadDVDAO.Export(saveFileDialog.FileName);
             }
         }
     }

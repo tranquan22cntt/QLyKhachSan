@@ -21,9 +21,9 @@ namespace BLL
             return thanhToanDAO.ThanhToanHoaDonTienPhong(maHD);
         }
 
-        public bool ThanhToanHoaDonDichVu(string maDV)
+       /* public bool ThanhToanHoaDonDichVu(string maDV)
         {
             return thanhToanDAO.ThanhToanHoaDonDichVu(maDV);
-        }
+        }*/
     }
 }

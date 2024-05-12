@@ -431,6 +431,7 @@
             Name = "frmQuanLyNhanVienn";
             Text = "QuanLyNhanVienn";
             WindowState = System.Windows.Forms.FormWindowState.Maximized;
+           // Load += frmQuanLyNhanVienn_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachNhanVien).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
