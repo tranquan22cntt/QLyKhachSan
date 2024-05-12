@@ -340,7 +340,7 @@
             dgvHoaDonTienPhong.Size = new System.Drawing.Size(492, 144);
             dgvHoaDonTienPhong.TabIndex = 0;
             dgvHoaDonTienPhong.CellContentClick += dgvHoaDonTienPhong_CellContentClick;
-            dgvHoaDonTienPhong.Click += btnThanhToan_Click;
+            //dgvHoaDonTienPhong.Click += btnThanhToan_Click;
             // 
             // groupBox4
             // 
@@ -390,7 +390,7 @@
             dgvHoaDonDichVu.RowHeadersWidth = 51;
             dgvHoaDonDichVu.Size = new System.Drawing.Size(492, 233);
             dgvHoaDonDichVu.TabIndex = 0;
-            dgvHoaDonDichVu.Click += btnThanhToan_Click;
+            //dgvHoaDonDichVu.Click += btnThanhToan_Click;
             // 
             // frmQuanLyHoaDon
             // 

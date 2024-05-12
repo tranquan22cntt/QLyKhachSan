@@ -15,6 +15,7 @@ namespace DoAnKhachSanLUXURY
     public partial class DangNhap : DevExpress.XtraEditors.XtraForm
     {
         private DangNhapBLL dangNhapBLL;
+       
         public DangNhap()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace DoAnKhachSanLUXURY
             if (dangNhapBLL.DangNhap(username, password))
             {
                 MessageBox.Show("Đăng nhập thành công.");
+               
                 Form1 form1 = new Form1();
                 form1.Show();
                 this.Hide();
