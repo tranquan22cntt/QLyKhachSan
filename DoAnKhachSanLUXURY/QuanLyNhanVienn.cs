@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -38,14 +39,14 @@ namespace DoAnKhachSanLUXURY
         {
             string manv = txtmanv.Text;
             string ten = txtTen.Text;
-            int sdt = int.Parse(txtsdt.Text);
+            string sdt = txtsdt.Text;
             string cccd = txtCCCD.Text;
             string diachi = txtdiachi.Text;
             DateTime ngaysinh = dtpNgaySinh.Value;
             DateTime ngayvaolam = dtpNgayVaoLam.Value;
             string gioitinh = cbGioiTinh.Text;
 
-            if (string.IsNullOrEmpty(manv) || string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(cccd) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(gioitinh))
+            if (string.IsNullOrEmpty(sdt) || string.IsNullOrEmpty(manv) || string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(cccd) || string.IsNullOrEmpty(diachi) || string.IsNullOrEmpty(gioitinh))
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -202,6 +203,48 @@ namespace DoAnKhachSanLUXURY
             {
                 MessageBox.Show("Không tìm thấy thông tin cho từ khóa đã nhập.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnCapNhatNhanVien_Click(object sender, EventArgs e)
+        {
+            string maNV = txtmanv.Text;
+            string tenNV = txtTen.Text;
+            string sdt = txtsdt.Text;
+            string cccd = txtCCCD.Text;
+            string diaChi = txtdiachi.Text;
+            DateTime ngaySinh = dtpNgaySinh.Value;
+            DateTime ngayVaoLam = dtpNgayVaoLam.Value;
+            string gioiTinh = cbGioiTinh.Text;     
+
+
+            QuanLyNVBLL quanLyNVBLL = new QuanLyNVBLL();
+            string tb;
+            bool check = false;
+            switch (txtloainhanvien.Text)
+            {
+                case "Tạp vụ":
+                    check  = quanLyNVBLL.CapNhatNhanVienTapVu(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    tb = check ? "Cập nhật nhân viên tạp vụ thành công." : "Cập nhật nhân viên tạp vụ không thành công.";
+                    MessageBox.Show(tb);
+                    dgvDanhSachNhanVien.DataSource = bll.LoadTapVuData();
+                    break;
+                case "Thu ngân":
+                    check = quanLyNVBLL.CapNhatNhanVienThuNgan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    tb = check ? "Cập nhật nhân viên thu ngân thành công." : "Cập nhật nhân viên thu ngân không thành công.";
+                    MessageBox.Show(tb);
+                    dgvDanhSachNhanVien.DataSource = bll.LoadThuNganData();
+                    break;
+                case "Tiếp tân":
+                    check = quanLyNVBLL.CapNhatNhanVienTiepTan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    tb = check ? "Cập nhật nhân viên tiếp tân thành công." : "Cập nhật nhân viên tiếp tân không thành công.";
+                    dgvDanhSachNhanVien.DataSource = bll.LoadTiepTanData();
+                    MessageBox.Show(tb);
+                    break;
+                default:
+                    MessageBox.Show("Loại nhân viên không hợp lệ.");
+                    break;
+            }
+            ClearAll();
         }
     }
 }
