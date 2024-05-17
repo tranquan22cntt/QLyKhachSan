@@ -5,8 +5,11 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using ClosedXML.Excel;
+    using OfficeOpenXml;
+    using System.IO;
 
-    namespace DAO
+namespace DAO
     {
         public class QuanLyNVDAO
         {
@@ -270,5 +273,20 @@
         }
 
 
+        public void ExportExcel(string filePath)
+        {
+            DataTable tapVuData = LoadTapVuData();
+            DataTable thuNganData = LoadThuNganData();
+            DataTable tiepTanData = LoadTiepTanData();
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(tapVuData, "TapVu");
+                wb.Worksheets.Add(thuNganData, "ThuNgan");
+                wb.Worksheets.Add(tiepTanData, "TiepTan");
+
+                wb.SaveAs(filePath);
+            }
+        }
     }
 }
