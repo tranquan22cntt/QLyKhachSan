@@ -214,7 +214,7 @@ namespace DoAnKhachSanLUXURY
             string diaChi = txtdiachi.Text;
             DateTime ngaySinh = dtpNgaySinh.Value;
             DateTime ngayVaoLam = dtpNgayVaoLam.Value;
-            string gioiTinh = cbGioiTinh.Text;     
+            string gioiTinh = cbGioiTinh.Text;
 
 
             QuanLyNVBLL quanLyNVBLL = new QuanLyNVBLL();
@@ -223,7 +223,7 @@ namespace DoAnKhachSanLUXURY
             switch (txtloainhanvien.Text)
             {
                 case "Tạp vụ":
-                    check  = quanLyNVBLL.CapNhatNhanVienTapVu(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
+                    check = quanLyNVBLL.CapNhatNhanVienTapVu(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
                     tb = check ? "Cập nhật nhân viên tạp vụ thành công." : "Cập nhật nhân viên tạp vụ không thành công.";
                     MessageBox.Show(tb);
                     dgvDanhSachNhanVien.DataSource = bll.LoadTapVuData();
@@ -241,10 +241,27 @@ namespace DoAnKhachSanLUXURY
                     MessageBox.Show(tb);
                     break;
                 default:
-                    MessageBox.Show("Loại nhân viên không hợp lệ.");
+                    MessageBox.Show("Loại nhân viên không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
             ClearAll();
+        }
+
+        private void btn_ex_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
+                saveFileDialog.Title = "Nhan Vien Data";
+                saveFileDialog.FileName = "NhanVien.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+                    bll.ExportExcel(filePath);
+                    MessageBox.Show("Dữ liệu đã được xuất ra file Excel thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

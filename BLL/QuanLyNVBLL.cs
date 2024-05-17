@@ -97,7 +97,10 @@ namespace BLL
             return dao.CapNhatNhanVienTiepTan(maNV, tenNV, sdt, cccd, diaChi, ngaySinh, ngayVaoLam, gioiTinh);
         }
 
-
+        public void ExportExcel(string filePath)
+        {
+            dao.ExportExcel(filePath);
+        }
 
     }
 }

@@ -63,6 +63,7 @@
             label1 = new System.Windows.Forms.Label();
             txtmanv = new System.Windows.Forms.TextBox();
             label12 = new System.Windows.Forms.Label();
+            btn_ex = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachNhanVien).BeginInit();
             groupBox4.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -206,9 +207,9 @@
             // 
             // btnDong
             // 
-            btnDong.Location = new System.Drawing.Point(198, 87);
+            btnDong.Location = new System.Drawing.Point(335, 82);
             btnDong.Name = "btnDong";
-            btnDong.Size = new System.Drawing.Size(286, 49);
+            btnDong.Size = new System.Drawing.Size(184, 49);
             btnDong.TabIndex = 3;
             btnDong.Text = "Đóng";
             btnDong.UseVisualStyleBackColor = true;
@@ -358,6 +359,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btn_ex);
             groupBox3.Controls.Add(btnDong);
             groupBox3.Controls.Add(btnXoaNhanVien);
             groupBox3.Controls.Add(btnThemNhanVien);
@@ -415,6 +417,16 @@
             label12.TabIndex = 17;
             label12.Text = "Mã Nhân viên";
             // 
+            // btn_ex
+            // 
+            btn_ex.Location = new System.Drawing.Point(65, 87);
+            btn_ex.Name = "btn_ex";
+            btn_ex.Size = new System.Drawing.Size(155, 44);
+            btn_ex.TabIndex = 4;
+            btn_ex.Text = "Xuất File Excel";
+            btn_ex.UseVisualStyleBackColor = true;
+            btn_ex.Click += btn_ex_Click;
+            // 
             // frmQuanLyNhanVienn
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -431,7 +443,6 @@
             Name = "frmQuanLyNhanVienn";
             Text = "QuanLyNhanVienn";
             WindowState = System.Windows.Forms.FormWindowState.Maximized;
-           // Load += frmQuanLyNhanVienn_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachNhanVien).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
@@ -484,5 +495,6 @@
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.TextBox txtmanv;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btn_ex;
     }
 }
